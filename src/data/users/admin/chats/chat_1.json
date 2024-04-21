@@ -1,0 +1,42 @@
+[
+  {
+    "role": "user",
+    "content": "Quelle est la capitale de la Moldavie ?"
+  },
+  {
+    "role": "assistant",
+    "content": "La capitale de la Moldavie est Chisinau."
+  },
+  {
+    "role": "user",
+    "content": "Combien y a t-il d'habitants ?"
+  },
+  {
+    "role": "assistant",
+    "content": "La population de Chisinau est d'environ 790 000 habitants."
+  },
+  {
+    "role": "user",
+    "content": "Comment s'appelee les habitants  ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Les habitants de Chisinau sont appelés des Chișinăuiens."
+  },
+  {
+    "role": "user",
+    "content": "Dans quel pays se trouve t-elle  ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Chisinau est la capitale de la Moldavie, un pays d'Europe de l'Est."
+  },
+  {
+    "role": "user",
+    "content": "Quelle langue parle t-on ?"
+  },
+  {
+    "role": "assistant",
+    "content": "En Moldavie, on parle principalement le roumain, qui est également appelé moldave."
+  }
+]

@@ -10,4 +10,16 @@ export class ChatController {
     console.log('chatMessage', chatMessage);
     return this.chatService.getAnswer(chatMessage);
   }
+
+  @Post('new')
+  startNewChat(
+    @Body() { user, chatName }: { user: string; chatName: string },
+  ): Promise<void> {
+    return this.chatService.startNewChat(user, chatName);
+  }
+
+  @Post('change')
+  changeChat(@Body() { chatName }: { chatName: string }): Promise<void> {
+    return this.chatService.changeChat(chatName);
+  }
 }
