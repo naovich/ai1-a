@@ -8,8 +8,8 @@ export class CommandController {
   @Post('interpret')
   async interpretCommand(
     @Body('command') command: string,
-  ): Promise<{ classification: string }> {
+  ): Promise<{ command: string; response: string }> {
     const classification = await this.commandService.interpretCommand(command);
-    return { classification };
+    return classification;
   }
 }
