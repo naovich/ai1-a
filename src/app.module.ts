@@ -4,9 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ChatModule } from './chat';
 import { TTSModule } from './Tts';
+import { CommandModule } from './commands';
 
 @Module({
-  imports: [ConfigModule.forRoot(), ChatModule, TTSModule],
+  imports: [ConfigModule.forRoot(), ChatModule, TTSModule, CommandModule],
   controllers: [AppController],
   providers: [AppService],
 })
