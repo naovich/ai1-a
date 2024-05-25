@@ -24,9 +24,12 @@
     "@nestjs/config": "^3.2.2",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "lgtv2": "^1.6.3",
     "openai": "^4.38.2",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "wol": "^1.0.7",
+    "yeelight-awesome": "^1.1.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
