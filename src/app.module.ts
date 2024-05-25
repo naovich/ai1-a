@@ -7,6 +7,7 @@ import { TTSModule } from './Tts';
 import { CommandModule } from './commands';
 import { TvModule } from './tv';
 import { LightModule } from './light';
+import { IoModule } from './io';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { LightModule } from './light';
     CommandModule,
     TvModule,
     LightModule,
+    IoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

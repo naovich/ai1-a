@@ -7,7 +7,7 @@ export class LightService {
 
   constructor() {
     this.yeelight = new Yeelight({
-      lightIp: '192.168.1.11',
+      lightIp: process.env.LIGHT_IP_ADDRESS,
       lightPort: 55443,
     });
 

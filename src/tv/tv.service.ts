@@ -9,7 +9,7 @@ export class TvService {
 
   constructor() {
     this.lgtv = lgtv2({
-      url: 'ws://192.168.1.17:3000', // Replace <TV_IP> with the IP address of your LG TV
+      url: `ws://${process.env.TV_IP_ADDRESS}:3000`,
     });
 
     this.lgtv.on('connect', () => {
@@ -28,7 +28,7 @@ export class TvService {
   async turnOnTv() {
     const wake = promisify(wol.wake);
     try {
-      await wake('20:28:BC:63:D2:F2');
+      await wake(process.env.TV_MAC_ADDRESS);
       console.log('Wake-on-LAN packet sent');
     } catch (err) {
       console.error('Error waking up TV:', err);
