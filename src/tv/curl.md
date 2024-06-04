@@ -33,6 +33,8 @@ curl -X POST http://localhost:3000/tv/play -H "Content-Type: application/json"
 
 curl -X POST http://localhost:3000/tv/channel-up -H "Content-Type: application/json"
 
+curl -X POST http://localhost:3000/tv/send-enter-key -H "Content-Type: application/json"
+
 curl -X POST http://localhost:3000/tv/send-key -H "Content-Type: application/json" -d '{"key": "UP"}'
 
     •	Enter: "ENTER"
@@ -58,3 +60,9 @@ curl -X POST http://localhost:3000/tv/send-key -H "Content-Type: application/jso
     •	Rewind: "REWIND"
     •	Info: "INFO"
     •	Exit: "EXIT"
+
+curl -X POST 'http://localhost:3000/tv/button' \
+-H 'Content-Type: application/json' \
+-d '{
+"button": "MUTE"
+}'

@@ -35,6 +35,18 @@ export class TvController {
     return { volume };
   }
 
+  @Post('volume-up')
+  async volumeUp() {
+    await this.tvService.volumeUp();
+    return { message: `Volume Up` };
+  }
+
+  @Post('volume-down')
+  async volumeDown() {
+    await this.tvService.volumeDown();
+    return { message: `Volume Down` };
+  }
+
   @Post('mute')
   async mute() {
     await this.tvService.mute();
@@ -55,8 +67,14 @@ export class TvController {
 
   @Post('send-key')
   async sendKey(@Body('key') key: string) {
-    await this.tvService;
+    await this.tvService.sendKey(key);
     return { message: `Sending key: ${key}` };
+  }
+
+  @Post('send-enter-key')
+  async sendEnterKey() {
+    await this.tvService.sendEnterKey();
+    return { message: `Send enter key` };
   }
 
   @Get('list-apps')
@@ -93,6 +111,41 @@ export class TvController {
   async channelDown() {
     await this.tvService.channelDown();
     return { message: `Channel Down` };
+  }
+  @Post('back')
+  async closeApp() {
+    await this.tvService.back();
+    return { message: `back ` };
+  }
+
+  @Post('home')
+  async home() {
+    await this.tvService.home();
+    return { message: `home ` };
+  }
+
+  @Post('rewind')
+  async rewind() {
+    await this.tvService.rewind();
+    return { message: `rewind ` };
+  }
+  @Post('fastForward')
+  async fastForward() {
+    await this.tvService.fastForward();
+    return { message: `fastForward ` };
+  }
+
+  @Post('click')
+  async getPointerInputSocketClick() {
+    await this.tvService.click();
+    return { message: `getPointerInputSocketClick ` };
+  }
+
+  //button
+  @Post('button')
+  async button(@Body('button') button: string) {
+    await this.tvService.button(button);
+    return { message: `button ` };
   }
 
   @Post('channel-list')

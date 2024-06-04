@@ -9,7 +9,7 @@ export class TvService {
 
   constructor() {
     this.lgtv = lgtv2({
-      url: `ws://${process.env.TV_IP_ADDRESS_ETHERNET}:3000`,
+      url: `ws://${process.env.TV_IP_ADDRESS_WIFI}:3000`,
     });
 
     this.lgtv.on('connect', () => {
@@ -28,7 +28,7 @@ export class TvService {
   async turnOnTv() {
     const wake = promisify(wol.wake);
     try {
-      await wake(process.env.TV_MAC_ADDRESS_ETHERNET);
+      await wake(process.env.TV_MAC_ADDRESS_WIFI);
       console.log('Wake-on-LAN packet sent');
     } catch (err) {
       console.error('Error waking up TV:', err);
@@ -54,6 +54,20 @@ export class TvService {
           console.error('Error opening app:', err);
         } else {
           console.log('App opened:', appId);
+        }
+      },
+    );
+  }
+
+  async openHomePage() {
+    this.lgtv.request(
+      'ssap://system.launcher/open',
+      { target: 'home' },
+      (err: Error | null) => {
+        if (err) {
+          console.error('Error opening home page:', err);
+        } else {
+          console.log('Home page opened');
         }
       },
     );
@@ -140,10 +154,53 @@ export class TvService {
     });
   }
 
+  async volumeUp() {
+    this.lgtv.request('ssap://audio/volumeUp', (err: Error | null) => {
+      if (err) {
+        console.error('Error increasing volume:', err);
+      } else {
+        console.log('Volume increased');
+      }
+    });
+  }
+
+  async volumeDown() {
+    this.lgtv.request('ssap://audio/volumeDown', (err: Error | null) => {
+      if (err) {
+        console.error('Error decreasing volume:', err);
+      } else {
+        console.log('Volume decreased');
+      }
+    });
+  }
+
+  async back() {
+    this.lgtv.request('ssap://system.launcher/close', (err: Error | null) => {
+      if (err) {
+        console.error('Error returning back:', err);
+      } else {
+        console.log('Returned back');
+      }
+    });
+  }
+
+  async home() {
+    this.lgtv.request(
+      'ssap://system.launcher/open',
+      { target: 'home' },
+      (err: Error | null) => {
+        if (err) {
+          console.error('Error opening home page:', err);
+        } else {
+          console.log('Home page opened');
+        }
+      },
+    );
+  }
+
   async sendKey(key: string) {
     this.lgtv.request(
       'ssap://com.webos.service.ime/sendEnterKey',
-      { key: key },
       (err: Error | null) => {
         if (err) {
           console.error('Error sending key:', err);
@@ -153,6 +210,31 @@ export class TvService {
       },
     );
   }
+
+  async sendEnterKey() {
+    this.lgtv.request(
+      'ssap://com.webos.service.ime/sendEnterKey',
+      (err: Error | null) => {
+        if (err) {
+          console.error('Error sending key:', err);
+        }
+      },
+    );
+  }
+
+  /*async sendKey(keyCode: string): Promise<void> {
+    this.lgtv.request(
+      'ssap://com.webos.service.ime/sendRemoteKey',
+      { keyCode },
+      (err: Error | null) => {
+        if (err) {
+          console.error('Error sending key:', err);
+        } else {
+          console.log('Key sent:', keyCode);
+        }
+      },
+    );
+  }*/
 
   async listApps(): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -196,9 +278,32 @@ export class TvService {
       if (err) {
         console.error('Error stopping:', err);
       } else {
-        console.log('Stopped');
+        console.log('stop');
       }
     });
+  }
+
+  async rewind() {
+    this.lgtv.request('ssap://media.controls/rewind', (err: Error | null) => {
+      if (err) {
+        console.error('Error stopping:', err);
+      } else {
+        console.log('rewind');
+      }
+    });
+  }
+
+  async fastForward() {
+    this.lgtv.request(
+      'ssap://media.controls/fastForward',
+      (err: Error | null) => {
+        if (err) {
+          console.error('Error stopping:', err);
+        } else {
+          console.log('fastForward');
+        }
+      },
+    );
   }
 
   async channelDown() {
@@ -239,6 +344,29 @@ export class TvService {
         console.log('getCurrentChannel');
       }
     });
+  }
+
+  async click() {
+    this.lgtv.getSocket(
+      'ssap://com.webos.service.networkinput/getPointerInputSocket',
+      function (err, sock) {
+        if (!err) {
+          sock.send('click');
+        }
+      },
+    );
+  }
+
+  async button(name: string) {
+    console.log('button', name);
+    this.lgtv.getSocket(
+      'ssap://com.webos.service.networkinput/getPointerInputSocket',
+      function (err, sock) {
+        if (!err) {
+          sock.send('button', { name: name });
+        }
+      },
+    );
   }
 
   async createToast(message: string) {
