@@ -1,10 +1,7 @@
-import { Injectable } from '@nestjs/common';
-
-import OpenAI from 'openai';
-import { systemProfile } from './data';
+import { Injectable, Inject } from '@nestjs/common';
+import { AIService } from './ai.interface';
 import * as fs from 'fs/promises';
 
-const openai = new OpenAI();
 const filePath = './src/data/users/';
 
 export interface ChatResponseProps {
@@ -16,17 +13,9 @@ export interface ChatResponseProps {
     content: string;
   }[];
   prompt: string;
-  model?:
-    | 'gpt-3.5-turbo'
-    | 'gpt-3.5-turbo-instruct'
-    | 'gpt-4'
-    | 'gpt-4-turbo'
-    | 'gpt-4-32k'
-    | 'gpt-4-vision-preview';
+  model?: string;
   speech?: boolean;
 }
-
-//dall-e-3 ts-1 tts-1-hd whisper-1
 
 @Injectable()
 export class ChatService {
@@ -35,7 +24,7 @@ export class ChatService {
   private user: string;
   private speechFile: string;
 
-  constructor() {
+  constructor(@Inject('AIService') private aiService: AIService) {
     this.user = 'admin';
     this.chatName = 'chat_1';
     this.initResponses();
@@ -77,36 +66,31 @@ export class ChatService {
 
   async getAnswer({
     system,
-    model = 'gpt-3.5-turbo',
+    model,
     prompt,
   }: ChatResponseProps): Promise<object> {
     this.responses.push({ role: 'user', content: prompt });
 
-    const completion = await openai.chat.completions.create({
-      messages: [
-        {
-          role: 'system',
-          content: system?.content ?? systemProfile[0].content,
-        },
-        ...this.responses,
-      ],
-      model: model,
-    });
+    const messagesToSend = [
+      { role: 'system', content: system?.content || '' },
+      ...this.responses,
+    ];
 
-    this.responses.push(completion.choices[0].message);
-    console.log(completion.choices[0]);
+    const message = await this.aiService.getAnswer(
+      JSON.stringify(messagesToSend),
+      model,
+    );
+
+    this.responses.push({ role: 'assistant', content: message.content });
+    console.log(message);
+
     this.saveHistory();
 
-    return completion.choices[0].message;
+    return message;
   }
+
   async generateSpeech(text: string): Promise<void> {
-    const mp3 = await openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'alloy',
-      input: text,
-    });
-    console.log(text);
-    const buffer = Buffer.from(await mp3.arrayBuffer());
+    const buffer = await this.aiService.generateSpeech(text);
     await fs.writeFile(this.speechFile, buffer);
   }
 
@@ -114,12 +98,7 @@ export class ChatService {
     const response: any = await this.getAnswer({
       prompt: text,
     });
-    const mp3 = await openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'alloy',
-      input: response.content,
-    });
-    const buffer = Buffer.from(await mp3.arrayBuffer());
+    const buffer = await this.aiService.generateSpeech(response.content);
     await fs.writeFile(this.speechFile, buffer);
   }
 
