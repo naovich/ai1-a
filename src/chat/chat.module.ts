@@ -3,6 +3,7 @@ import { ChatController } from './chat.controller';
 import { ChatService } from './chat.service';
 import { OpenAIService } from './openai.service';
 import { AnthropicService } from './anthropic.service';
+import { GeminiService } from './gemini.service';
 
 @Module({
   controllers: [ChatController],
@@ -15,6 +16,7 @@ import { AnthropicService } from './anthropic.service';
         return {
           anthropic: new AnthropicService(),
           openai: new OpenAIService(),
+          gemini: new GeminiService(),
           defaultProvider,
         };
       },
