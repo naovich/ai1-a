@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ChatController } from './chat.controller';
 import { ChatService } from './chat.service';
 import { OpenAIService } from './openai.service';
+import { AnthropicService } from './anthropic.service';
 
 @Module({
   controllers: [ChatController],
@@ -9,7 +10,14 @@ import { OpenAIService } from './openai.service';
     ChatService,
     {
       provide: 'AIService',
-      useClass: OpenAIService,
+      useFactory: () => {
+        const defaultProvider = process.env.AI_PROVIDER || 'openai';
+        return {
+          anthropic: new AnthropicService(),
+          openai: new OpenAIService(),
+          defaultProvider,
+        };
+      },
     },
   ],
 })

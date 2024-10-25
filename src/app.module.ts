@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
+import { ChatModule } from './chat/chat.module';
 import { ConfigModule } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ChatModule } from './chat';
 import { TTSModule } from './Tts';
 import { CommandModule } from './commands';
 
@@ -16,7 +14,5 @@ import { IoModule } from './io';
     CommandModule,
     IoModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
