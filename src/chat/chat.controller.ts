@@ -1,15 +1,46 @@
-import { Body, Controller, Post, Get, Res, Query } from '@nestjs/common';
-import { ChatResponseProps, ChatService } from './chat.service';
+import { Body, Controller, Post, Get, Res, Query, Param } from '@nestjs/common';
+import { ChatService } from './chat.service';
 import { Response } from 'express';
-
+import { AIProvider } from './ai.interface';
+import { ChatMessage } from './chat.message.interface';
 @Controller('chat')
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 
+  @Get('list')
+  async getAvailableChats(): Promise<string[]> {
+    return this.chatService.getAvailableChats();
+  }
+
+  @Post('create')
+  async createNewChat(
+    @Body() { chatName }: { chatName: string },
+  ): Promise<{ chatName: string }> {
+    await this.chatService.startNewChat('Claude', chatName);
+    return { chatName };
+  }
+
   @Post('answer')
-  getAnswer(@Body() chatMessage: ChatResponseProps): Promise<object> {
-    console.log('chatMessage', chatMessage);
-    return this.chatService.getAnswer(chatMessage);
+  async getAnswer(
+    @Body()
+    {
+      prompt,
+      provider,
+      model,
+      chatId,
+    }: {
+      prompt: string;
+      provider?: string;
+      model?: string;
+      chatId: string;
+    },
+  ): Promise<object> {
+    return this.chatService.getAnswer({
+      prompt,
+      provider: provider as AIProvider,
+      model,
+      chatId,
+    });
   }
 
   @Get('stream')
@@ -17,6 +48,7 @@ export class ChatController {
     const filePath = './temp/audio/speech.mp3';
     res.sendFile(filePath, { root: '.' });
   }
+
   @Post('new')
   startNewChat(
     @Body() { user, chatName }: { user: string; chatName: string },
@@ -40,5 +72,17 @@ export class ChatController {
   getGenerateChatSpeech(@Query('text') text: string): Promise<void> {
     console.log('text', text);
     return this.chatService.generateChatSpeech(text);
+  }
+
+  @Get('history/:chatId')
+  async getChatHistory(@Param('chatId') chatId: string): Promise<{
+    messages: ChatMessage[];
+    lastUpdated: string;
+    chatInfo: {
+      user: string;
+      chatName: string;
+    };
+  }> {
+    return this.chatService.getChatHistory(chatId);
   }
 }

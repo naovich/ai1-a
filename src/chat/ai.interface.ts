@@ -1,4 +1,4 @@
-export type AIProvider = 'anthropic' | 'openai' | 'gemini';
+export type AIProvider = 'openai' | 'anthropic' | 'gemini';
 
 export interface MessageMetadata {
   timestamp: string;
@@ -33,4 +33,15 @@ export interface AIService {
     model?: string,
   ): Promise<AIResponse>;
   generateSpeech(text: string): Promise<Buffer>;
+}
+
+export interface ChatContent {
+  type: 'text' | 'image';
+  text?: string;
+  image_url?: string;
+}
+
+export interface ChatMessage {
+  role: 'assistant' | 'user' | 'system';
+  content: string | ChatContent[];
 }

@@ -1,0 +1,44 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quelle est la capitale de la Pologne ?",
+      "metadata": {
+        "timestamp": "2024-10-28T16:28:26.959Z",
+        "provider": "gemini"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Varsovie",
+      "metadata": {
+        "timestamp": "2024-10-28T16:28:29.158Z",
+        "provider": "gemini",
+        "model": "gemini-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "y-a-il un fleuve",
+      "metadata": {
+        "timestamp": "2024-10-28T18:03:57.527Z",
+        "provider": "gemini",
+        "model": "gemini-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Oui, il y a un fleuve à Varsovie : la Vistule.",
+      "metadata": {
+        "timestamp": "2024-10-28T18:04:00.163Z",
+        "provider": "gemini",
+        "model": "gemini-pro"
+      }
+    }
+  ],
+  "lastUpdated": "2024-10-28T18:04:00.164Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "chat_1730132880483"
+  }
+}

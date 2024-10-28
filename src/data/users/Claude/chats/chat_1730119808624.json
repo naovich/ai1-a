@@ -1,0 +1,26 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "quelle était la première larrguer ?",
+      "metadata": {
+        "timestamp": "2024-10-28T12:50:43.258Z",
+        "provider": "openai"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Il semble que vous vouliez savoir quelle était la première \"larrguer\", mais il semble y avoir une erreur de frappe ou de compréhension dans votre question. Si vous faites référence à un terme spécifique, une clarification pourrait aider. Cependant, si vous cherchez des informations sur un sujet particulier ou un terme similaire, n'hésitez pas à reformuler votre question pour que je puisse vous fournir une réponse précise.",
+      "metadata": {
+        "timestamp": "2024-10-28T12:50:50.432Z",
+        "provider": "openai",
+        "model": "gpt-4-turbo-preview"
+      }
+    }
+  ],
+  "lastUpdated": "2024-10-28T12:50:50.432Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "chat_1730119808624"
+  }
+}

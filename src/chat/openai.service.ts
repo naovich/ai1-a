@@ -22,13 +22,36 @@ export class OpenAIService implements AIService {
     model: ModelProps = this.defaultModel,
   ): Promise<AIResponse> {
     const startTime = Date.now();
-
     try {
+      const formattedMessages = [{ role: 'system', content: systemContent }];
+
+      try {
+        const parsedPrompt = JSON.parse(prompt);
+        formattedMessages.push(
+          ...parsedPrompt.map((msg) => {
+            if (Array.isArray(msg.content)) {
+              return {
+                role: msg.role,
+                content: msg.content.map((c) =>
+                  c.type === 'image'
+                    ? {
+                        type: 'image_url',
+                        image_url: {
+                          url: c.image_url,
+                        },
+                      }
+                    : { type: 'text', text: c.text },
+                ),
+              };
+            }
+            return msg;
+          }),
+        );
+      } catch {
+        formattedMessages.push({ role: 'user', content: prompt });
+      }
       const completion = await this.openai.chat.completions.create({
-        messages: [
-          { role: 'system', content: systemContent },
-          { role: 'user', content: prompt },
-        ],
+        messages: formattedMessages as OpenAI.Chat.ChatCompletionMessageParam[],
         model: model,
         temperature: 0.7,
         max_tokens: 1000,

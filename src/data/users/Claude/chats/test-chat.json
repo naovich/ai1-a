@@ -1,0 +1,27 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Bonjour, comment vas-tu ?",
+      "metadata": {
+        "timestamp": "2024-10-28T19:07:23.315Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Bonjour ! Je vais bien, merci. Comment puis-je vous aider aujourd'hui ?",
+      "metadata": {
+        "timestamp": "2024-10-28T19:07:25.037Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-10-28T19:07:25.037Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "test-chat"
+  }
+}

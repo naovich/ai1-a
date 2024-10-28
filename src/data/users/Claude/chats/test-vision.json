@@ -1,0 +1,27 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "[{\"role\": \"user\", \"content\": [{\"type\": \"text\", \"text\": \"Que vois-tu sur cette image ?\"}, {\"type\": \"image\", \"image_url\": \"https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80\"}]}]",
+      "metadata": {
+        "timestamp": "2024-10-28T19:17:07.869Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je ne peux pas voir d'images directement. Cependant, si vous décrivez l'image, je serais heureux de vous aider à en discuter ou à répondre à vos questions à son sujet.",
+      "metadata": {
+        "timestamp": "2024-10-28T19:17:10.572Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    }
+  ],
+  "lastUpdated": "2024-10-28T19:17:10.572Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "test-vision"
+  }
+}

@@ -1,18 +1,14 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { AIService } from './ai.interface';
+import { AIProvider, AIService } from './ai.interface';
 import * as fs from 'fs/promises';
 
 const filePath = './src/data/users/';
 
-type AIProvider = 'anthropic' | 'openai';
-
 export interface ChatResponseProps {
-  system?: {
-    content?: string;
-  };
   prompt: string;
   model?: string;
   provider?: AIProvider;
+  chatId: string;
 }
 
 interface MessageMetadata {
@@ -39,6 +35,7 @@ export class ChatService {
   private chatName: string;
   private user: string;
   private speechFile: string;
+  private chatsPath = './src/data/users/Claude/chats/';
 
   constructor(@Inject('AIService') private services: Services) {
     this.user = 'Claude';
@@ -79,16 +76,50 @@ export class ChatService {
     }
   }
 
+  async getAvailableChats(): Promise<string[]> {
+    try {
+      await fs.access(this.chatsPath);
+      const files = await fs.readdir(this.chatsPath);
+      return files
+        .filter((file) => file.endsWith('.json'))
+        .map((file) => file.replace('.json', ''));
+    } catch (error) {
+      await fs.mkdir(this.chatsPath, { recursive: true });
+      return [];
+    }
+  }
+
+  async getChatHistory(chatId: string) {
+    const path = `${this.chatsPath}${chatId}.json`;
+    try {
+      const data = await fs.readFile(path, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      return {
+        messages: [],
+        lastUpdated: new Date().toISOString(),
+        chatInfo: {
+          user: 'Claude',
+          chatName: chatId,
+        },
+      };
+    }
+  }
+
   async getAnswer({
-    system,
-    model,
     prompt,
+    model,
     provider,
+    chatId,
   }: ChatResponseProps): Promise<object> {
+    this.chatName = chatId;
+    // Charger l'historique existant
+    const history = await this.getChatHistory(chatId);
+    this.responses = history.messages;
+
     const selectedProvider = (provider ||
       this.services.defaultProvider) as AIProvider;
     const timestamp = new Date().toISOString();
-    console.log('Using AI Provider:', selectedProvider);
 
     this.responses.push({
       role: 'user',
@@ -96,6 +127,7 @@ export class ChatService {
       metadata: {
         timestamp,
         provider: selectedProvider,
+        model,
       },
     });
 
@@ -104,26 +136,9 @@ export class ChatService {
       throw new Error(`Provider ${selectedProvider} not supported`);
     }
 
-    const systemMessage = system?.content
-      ? {
-          role: 'system' as const,
-          content: `Context: Current time is ${new Date().toLocaleString()}. Previous messages include their timestamps. Please consider this temporal context in your response.\n\n${system.content}`,
-          metadata: {
-            timestamp,
-            provider: selectedProvider,
-            model,
-          },
-        }
-      : null;
-
-    const messagesToSend = [
-      ...(systemMessage ? [systemMessage] : []),
-      ...this.responses,
-    ];
-
     const message = await service.getAnswer(
-      JSON.stringify(messagesToSend),
-      systemMessage?.content,
+      JSON.stringify(this.responses),
+      '',
       model,
     );
 
@@ -149,6 +164,7 @@ export class ChatService {
   async generateChatSpeech(text: string): Promise<void> {
     const response: any = await this.getAnswer({
       prompt: text,
+      chatId: this.chatName, // Ajout du chatId manquant
     });
     const buffer = await this.services.openai.generateSpeech(response.content);
     await fs.writeFile(this.speechFile, buffer);
