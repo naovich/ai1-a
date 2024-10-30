@@ -26,6 +26,7 @@ interface ChatMessage {
 interface Services {
   anthropic: AIService;
   openai: AIService;
+  gemini:AIService
   defaultProvider: AIProvider;
 }
 
@@ -106,13 +107,38 @@ export class ChatService {
     }
   }
 
-  private extractImagesFromText(text: string): {
+  private extractImagesFromText(content: string | any[]): {
     originalText: string;
     text: string;
-    images: string[];
+    images: { type: 'url' | 'file'; content: string }[];
   } {
+    if (Array.isArray(content)) {
+      const textContent =
+        content.find((item) => item.type === 'text')?.text || '';
+      const images = content
+        .filter((item) => item.type === 'image_url')
+        .map((item) => ({
+          type: item.image_url.url.startsWith('data:')
+            ? 'file'
+            : ('url' as 'url' | 'file'),
+          content: item.image_url.url.startsWith('data:')
+            ? item.image_url.url.split(',')[1]
+            : item.image_url.url,
+        }));
+
+      return {
+        originalText: textContent,
+        text: textContent,
+        images,
+      };
+    }
+
+    const text = content as string;
     const urlRegex = /(https?:\/\/[^\s]+)/gi;
-    const images = text.match(urlRegex) || [];
+    const images = (text.match(urlRegex) || []).map((url) => ({
+      type: 'url' as const,
+      content: url,
+    }));
     const cleanText = text.replace(urlRegex, '').trim();
 
     return {
@@ -128,6 +154,7 @@ export class ChatService {
     provider,
     chatId,
   }: ChatResponseProps): Promise<object> {
+    
     this.chatName = chatId;
     const history = await this.getChatHistory(chatId);
     this.responses = history.messages;
@@ -137,8 +164,8 @@ export class ChatService {
     const timestamp = new Date().toISOString();
 
     const { originalText, text, images } = this.extractImagesFromText(prompt);
-    let formattedPrompt;
 
+    let formattedPrompt;
     if (images.length > 0) {
       formattedPrompt = {
         role: 'user',
@@ -147,13 +174,17 @@ export class ChatService {
             type: 'text',
             text: originalText,
           },
-          ...images.map((url) => ({
+          ...images.map((img) => ({
             type: 'image_url',
-            image_url: { url },
+            image_url: {
+              url:
+                img.type === 'file'
+                  ? `data:image/jpeg;base64,${img.content}`
+                  : img.content,
+            },
           })),
         ],
       };
-      this.responses = [];
     } else {
       formattedPrompt = {
         role: 'user',

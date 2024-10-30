@@ -1,14 +1,7 @@
 import OpenAI from 'openai';
 import { AIService, AIProvider, AIResponse } from './ai.interface';
 
-type ModelProps =
-  | 'gpt-3.5-turbo'
-  | 'gpt-3.5-turbo-instruct'
-  | 'gpt-4-vision-preview'
-  | 'gpt-4o-mini'
-  | 'gpt-4o'
-  | 'o1-mini'
-  | 'o1-preview';
+type ModelProps = 'gpt-4o-mini' | 'gpt-4o' | 'o1-mini' | 'o1-preview';
 
 export class OpenAIService implements AIService {
   private openai = new OpenAI({
@@ -40,7 +33,11 @@ export class OpenAIService implements AIService {
                     type: item.type,
                     ...(item.type === 'text' ? { text: item.text } : {}),
                     ...(item.type === 'image_url'
-                      ? { image_url: item.image_url }
+                      ? {
+                          image_url: {
+                            url: item.image_url.url,
+                          },
+                        }
                       : {}),
                   };
                 })
