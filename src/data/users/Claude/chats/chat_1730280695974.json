@@ -1,0 +1,43 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "metadata": {
+        "timestamp": "2024-10-30T09:31:43.827Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue.",
+      "metadata": {
+        "timestamp": "2024-10-30T09:31:45.124Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "metadata": {
+        "timestamp": "2024-10-30T09:31:58.246Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue.",
+      "metadata": {
+        "timestamp": "2024-10-30T09:31:59.495Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-10-30T09:31:59.496Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "chat_1730280695974"
+  }
+}

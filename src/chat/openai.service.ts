@@ -23,36 +23,43 @@ export class OpenAIService implements AIService {
   ): Promise<AIResponse> {
     const startTime = Date.now();
     try {
-      const formattedMessages = [{ role: 'system', content: systemContent }];
+      const formattedMessages = [];
+      if (systemContent) {
+        formattedMessages.push({ role: 'system', content: systemContent });
+      }
 
       try {
         const parsedPrompt = JSON.parse(prompt);
         formattedMessages.push(
-          ...parsedPrompt.map((msg) => {
-            if (Array.isArray(msg.content)) {
-              return {
-                role: msg.role,
-                content: msg.content.map((c) =>
-                  c.type === 'image'
-                    ? {
-                        type: 'image_url',
-                        image_url: {
-                          url: c.image_url,
-                        },
-                      }
-                    : { type: 'text', text: c.text },
-                ),
-              };
-            }
-            return msg;
-          }),
+          ...parsedPrompt.map((msg) => ({
+            role: msg.role,
+            content: Array.isArray(msg.content)
+              ? msg.content.map((item) => {
+                  if (typeof item === 'string') return item;
+                  return {
+                    type: item.type,
+                    ...(item.type === 'text' ? { text: item.text } : {}),
+                    ...(item.type === 'image_url'
+                      ? { image_url: item.image_url }
+                      : {}),
+                  };
+                })
+              : msg.content,
+          })),
         );
       } catch {
         formattedMessages.push({ role: 'user', content: prompt });
       }
+
+      const hasImages = formattedMessages.some(
+        (msg) =>
+          Array.isArray(msg.content) &&
+          msg.content.some((item) => item.type === 'image_url'),
+      );
+
       const completion = await this.openai.chat.completions.create({
-        messages: formattedMessages as OpenAI.Chat.ChatCompletionMessageParam[],
-        model: model,
+        messages: formattedMessages,
+        model: hasImages ? 'gpt-4o' : model,
         temperature: 0.7,
         max_tokens: 1000,
       });

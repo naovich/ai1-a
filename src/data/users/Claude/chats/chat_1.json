@@ -415,9 +415,62 @@
         "timestamp": "2024-10-28T10:33:01.637Z",
         "provider": "anthropic"
       }
+    },
+    {
+      "role": "user",
+      "content": "Peux-tu décrire cette image en détail ? https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?q=80&w=1000&auto=format&fit=crop",
+      "metadata": {
+        "timestamp": "2024-10-30T08:23:56.648Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je ne peux pas voir ou décrire l'image que vous avez partagée. Bien que vous ayez fourni un lien URL, je n'ai pas la capacité d'accéder aux images externes ou de les analyser. Je peux seulement percevoir le texte qui m'est envoyé directement dans notre conversation. Si vous souhaitez que je commente une image, il faudrait la partager directement dans notre conversation d'une manière que je puisse la voir.",
+      "metadata": {
+        "timestamp": "2024-10-30T08:24:02.836Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Peux-tu décrire cette image en détail ? https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?q=80&w=1000&auto=format&fit=crop",
+      "metadata": {
+        "timestamp": "2024-10-30T08:24:11.670Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je suis désolé, mais je ne peux pas accéder aux images ou les visualiser directement à partir d'URL. Cependant, si vous pouvez me décrire l'image, je serais ravi de vous aider avec des informations ou des analyses basées sur votre description.",
+      "metadata": {
+        "timestamp": "2024-10-30T08:24:13.925Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "metadata": {
+        "timestamp": "2024-10-30T09:24:53.206Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue.",
+      "metadata": {
+        "timestamp": "2024-10-30T09:24:54.495Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
     }
   ],
-  "lastUpdated": "2024-10-28T10:33:01.637Z",
+  "lastUpdated": "2024-10-30T09:24:54.496Z",
   "chatInfo": {
     "user": "Claude",
     "chatName": "chat_1"

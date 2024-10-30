@@ -106,6 +106,22 @@ export class ChatService {
     }
   }
 
+  private extractImagesFromText(text: string): {
+    originalText: string;
+    text: string;
+    images: string[];
+  } {
+    const urlRegex = /(https?:\/\/[^\s]+)/gi;
+    const images = text.match(urlRegex) || [];
+    const cleanText = text.replace(urlRegex, '').trim();
+
+    return {
+      originalText: text,
+      text: cleanText,
+      images,
+    };
+  }
+
   async getAnswer({
     prompt,
     model,
@@ -113,7 +129,6 @@ export class ChatService {
     chatId,
   }: ChatResponseProps): Promise<object> {
     this.chatName = chatId;
-    // Charger l'historique existant
     const history = await this.getChatHistory(chatId);
     this.responses = history.messages;
 
@@ -121,9 +136,34 @@ export class ChatService {
       this.services.defaultProvider) as AIProvider;
     const timestamp = new Date().toISOString();
 
+    const { originalText, text, images } = this.extractImagesFromText(prompt);
+    let formattedPrompt;
+
+    if (images.length > 0) {
+      formattedPrompt = {
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            text: originalText,
+          },
+          ...images.map((url) => ({
+            type: 'image_url',
+            image_url: { url },
+          })),
+        ],
+      };
+      this.responses = [];
+    } else {
+      formattedPrompt = {
+        role: 'user',
+        content: text,
+      };
+    }
+
     this.responses.push({
       role: 'user',
-      content: prompt,
+      content: formattedPrompt.content,
       metadata: {
         timestamp,
         provider: selectedProvider,
@@ -137,7 +177,12 @@ export class ChatService {
     }
 
     const message = await service.getAnswer(
-      JSON.stringify(this.responses),
+      JSON.stringify(
+        this.responses.map((msg) => ({
+          role: msg.role,
+          content: msg.content,
+        })),
+      ),
       '',
       model,
     );
@@ -164,7 +209,7 @@ export class ChatService {
   async generateChatSpeech(text: string): Promise<void> {
     const response: any = await this.getAnswer({
       prompt: text,
-      chatId: this.chatName, // Ajout du chatId manquant
+      chatId: this.chatName,
     });
     const buffer = await this.services.openai.generateSpeech(response.content);
     await fs.writeFile(this.speechFile, buffer);
