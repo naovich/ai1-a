@@ -58,7 +58,7 @@ export class OpenAIService implements AIService {
         messages: formattedMessages,
         model: hasImages ? 'gpt-4o' : model,
         temperature: 0.7,
-        max_tokens: 1000,
+        max_completion_tokens: 1000,
       });
 
       return {
