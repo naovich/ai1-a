@@ -19,14 +19,14 @@ interface MessageMetadata {
 
 interface ChatMessage {
   role: 'assistant' | 'user' | 'system';
-  content: string;
+  content: string | any[];
   metadata?: MessageMetadata;
 }
 
 interface Services {
   anthropic: AIService;
   openai: AIService;
-  gemini:AIService
+  gemini: AIService;
   defaultProvider: AIProvider;
 }
 
@@ -154,7 +154,6 @@ export class ChatService {
     provider,
     chatId,
   }: ChatResponseProps): Promise<object> {
-    
     this.chatName = chatId;
     const history = await this.getChatHistory(chatId);
     this.responses = history.messages;
@@ -207,16 +206,15 @@ export class ChatService {
       throw new Error(`Provider ${selectedProvider} not supported`);
     }
 
-    const message = await service.getAnswer(
-      JSON.stringify(
-        this.responses.map((msg) => ({
-          role: msg.role,
-          content: msg.content,
-        })),
-      ),
-      '',
-      model,
+    // Préparer les messages pour le fournisseur sous forme de chaîne JSON
+    const messagesForProvider = JSON.stringify(
+      this.responses.map((msg) => ({
+        role: msg.role,
+        content: msg.content,
+      })),
     );
+
+    const message = await service.getAnswer(messagesForProvider, '', model);
 
     this.responses.push({
       role: 'assistant',

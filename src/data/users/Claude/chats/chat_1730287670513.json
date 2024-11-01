@@ -78,24 +78,24 @@
     },
     {
       "role": "user",
-      "content": "comment",
+      "content": "De quelle race est le chien",
       "metadata": {
-        "timestamp": "2024-10-30T18:04:36.230Z",
-        "provider": "gemini",
-        "model": "gemini-pro"
+        "timestamp": "2024-10-31T06:35:59.479Z",
+        "provider": "openai",
+        "model": "claude-3-5-sonnet-20241022"
       }
     },
     {
       "role": "assistant",
-      "content": "Désolé, une erreur est survenue.",
+      "content": "Le chien semble être un berger blanc suisse ou un husky blanc, mais sans certitude.",
       "metadata": {
-        "timestamp": "2024-10-30T18:04:43.273Z",
-        "provider": "gemini",
-        "model": "gemini-pro"
+        "timestamp": "2024-10-31T06:36:06.459Z",
+        "provider": "openai",
+        "model": "claude-3-5-sonnet-20241022"
       }
     }
   ],
-  "lastUpdated": "2024-10-30T18:04:43.274Z",
+  "lastUpdated": "2024-10-31T06:41:21.980Z",
   "chatInfo": {
     "user": "Claude",
     "chatName": "chat_1730287670513"

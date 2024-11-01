@@ -1,0 +1,38 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "https://plus.unsplash.com/premium_photo-1727943449571-1b97436f1fe7?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D décrit l'image"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://plus.unsplash.com/premium_photo-1727943449571-1b97436f1fe7?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-01T14:49:24.122Z",
+        "provider": "openai",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'image montre quatre personnes assises ensemble sur un fond neutre. Tous portent des vêtements décontractés dans des tons de blanc, noir et denim. L'ambiance est détendue et amicale, les personnes posant naturellement. La composition est simple et met en avant la diversité et la camaraderie.",
+      "metadata": {
+        "timestamp": "2024-11-01T14:49:30.290Z",
+        "provider": "openai",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-01T14:49:30.291Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "chat_1730472287602"
+  }
+}

@@ -5,6 +5,8 @@ import {
 } from '@google/generative-ai';
 import { AIService, AIProvider, AIResponse } from './ai.interface';
 import OpenAI from 'openai';
+import fetch from 'node-fetch';
+import { Buffer } from 'buffer';
 
 type ModelProps = 'gemini-pro' | 'gemini-1.5-flash' | 'gemini-1.5-pro';
 
@@ -14,7 +16,7 @@ export class GeminiService implements AIService {
     apiKey: process.env.OPENAI_API_KEY,
   });
 
-  private defaultModel: ModelProps = 'gemini-pro';
+  private defaultModel: ModelProps = 'gemini-1.5-pro';
 
   async getAnswer(
     prompt: string,
@@ -22,24 +24,44 @@ export class GeminiService implements AIService {
     model: ModelProps = this.defaultModel,
   ): Promise<AIResponse> {
     const startTime = Date.now();
-    let messages;
 
     try {
-      messages = JSON.parse(prompt);
-    } catch {
-      messages = [{ role: 'user', content: prompt }];
-    }
+      // Parser 'prompt' en tableau de messages
+      let formattedMessages: any[];
+      try {
+        formattedMessages = JSON.parse(prompt);
+      } catch (error) {
+        formattedMessages = [{ role: 'user', content: prompt }];
+      }
 
-    try {
       const geminiModel = this.genAI.getGenerativeModel({ model: model });
 
-      const history = messages.slice(0, -1).map((msg) => ({
-        role: msg.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: msg.content }],
-      }));
+      // Préparer l'historique initial
+      const initialHistory = systemContent
+        ? [{ role: 'user', parts: [{ text: systemContent }] }]
+        : [];
 
+      // Formater les messages d'historique pour Gemini
+      const history = await Promise.all(
+        formattedMessages.slice(0, -1).map(async (msg) => {
+          try {
+            return {
+              role: msg.role === 'assistant' ? 'model' : 'user',
+              parts: await this.formatMessageContent(msg.content),
+            };
+          } catch (error) {
+            console.error('Error formatting message in history:', error);
+            return {
+              role: msg.role === 'assistant' ? 'model' : 'user',
+              parts: [{ text: this.extractTextOnly(msg.content) }],
+            };
+          }
+        }),
+      );
+
+      // Démarrer le chat avec l'historique formaté
       const chat = geminiModel.startChat({
-        history,
+        history: [...initialHistory, ...history].filter(Boolean),
         generationConfig: {
           maxOutputTokens: 1000,
         },
@@ -63,38 +85,37 @@ export class GeminiService implements AIService {
         ],
       });
 
-      const lastMessage = systemContent
-        ? `${systemContent}\n\n${messages[messages.length - 1].content}`
-        : messages[messages.length - 1].content;
+      // Obtenir le dernier message (la dernière entrée de l'utilisateur)
+      const lastMessage = formattedMessages[formattedMessages.length - 1];
+      const formattedLastMessage = await this.formatMessageContent(
+        lastMessage.content,
+      );
 
-      const result = await chat.sendMessage(lastMessage);
+      try {
+        const result = await chat.sendMessage(formattedLastMessage);
+        const response = await result.response;
 
-      const response = await result.response;
-
-      return {
-        role: 'assistant',
-        content: response.text(),
-        provider: 'gemini' as AIProvider,
-        metadata: {
-          timestamp: new Date().toISOString(),
-          model: model,
-          responseTime: Date.now() - startTime,
-          tokens: {
-            prompt: 0,
-            completion: 0,
-            total: 0,
+        return {
+          role: 'assistant',
+          content: response.text(),
+          provider: 'gemini' as AIProvider,
+          metadata: {
+            timestamp: new Date().toISOString(),
+            model: model,
+            responseTime: Date.now() - startTime,
+            status: 'success',
           },
-          status: 'success',
-          messageId:
-            response.promptFeedback?.safetyRatings?.[0]?.probability || '',
-          stopReason: 'stop',
-        },
-      };
+        };
+      } catch (error) {
+        console.error('Error during chat.sendMessage:', error);
+        throw error;
+      }
     } catch (error) {
       console.error('Gemini error:', error);
       return {
         role: 'assistant',
-        content: 'Désolé, une erreur est survenue.',
+        content:
+          'Désolé, une erreur est survenue lors du traitement de votre demande.',
         provider: 'gemini',
         metadata: {
           timestamp: new Date().toISOString(),
@@ -117,5 +138,60 @@ export class GeminiService implements AIService {
       input: text,
     });
     return Buffer.from(await mp3.arrayBuffer());
+  }
+
+  private async formatMessageContent(content: any): Promise<any[]> {
+    if (Array.isArray(content)) {
+      const formattedParts = [];
+
+      for (const item of content) {
+        if (item.type === 'text') {
+          formattedParts.push({ text: item.text });
+        } else if (item.type === 'image_url') {
+          try {
+            let imageData: string;
+            let mimeType: string;
+
+            if (item.image_url.url.startsWith('data:')) {
+              const [mimeInfo, data] = item.image_url.url.split(',');
+              mimeType = mimeInfo.split(':')[1].split(';')[0];
+              imageData = data;
+            } else {
+              const response = await fetch(item.image_url.url);
+              const arrayBuffer = await response.arrayBuffer();
+              const contentType =
+                response.headers.get('content-type') || 'image/jpeg';
+              imageData = Buffer.from(arrayBuffer).toString('base64');
+              mimeType = contentType;
+            }
+
+            formattedParts.push({
+              inlineData: {
+                data: imageData,
+                mimeType: mimeType,
+              },
+            });
+          } catch (error) {
+            console.error('Error processing image:', error);
+            formattedParts.push({
+              text: `[Image non chargée: ${item.image_url.url}]`,
+            });
+          }
+        }
+      }
+      return formattedParts;
+    }
+
+    return [{ text: content }];
+  }
+
+  private extractTextOnly(content: any): string {
+    if (Array.isArray(content)) {
+      return content
+        .filter((item) => item.type === 'text')
+        .map((item) => item.text)
+        .join(' ');
+    }
+    return content.toString();
   }
 }
