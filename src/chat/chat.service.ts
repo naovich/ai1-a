@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { AIProvider, AIService } from './ai.interface';
 import * as fs from 'fs/promises';
+import { systemProfile } from './chat.data';
 
 const filePath = './src/data/users/';
 
@@ -37,6 +38,7 @@ export class ChatService {
   private user: string;
   private speechFile: string;
   private chatsPath = './src/data/users/Claude/chats/';
+  private systemProfile: string = '';
 
   constructor(@Inject('AIService') private services: Services) {
     this.user = 'Claude';
@@ -62,6 +64,7 @@ export class ChatService {
     this.user = user;
     this.chatName = chatName;
     this.responses = [];
+    this.setSystemProfile('AGI');
     await this.initResponses();
   }
 
@@ -94,7 +97,16 @@ export class ChatService {
     const path = `${this.chatsPath}${chatId}.json`;
     try {
       const data = await fs.readFile(path, 'utf8');
-      return JSON.parse(data);
+      const history = JSON.parse(data);
+
+      if (
+        history.messages.length > 0 &&
+        history.messages[0].role === 'system'
+      ) {
+        history.messages = history.messages.slice(1);
+      }
+
+      return history;
     } catch (error) {
       return {
         messages: [],
@@ -158,6 +170,18 @@ export class ChatService {
     const history = await this.getChatHistory(chatId);
     this.responses = history.messages;
 
+    if (this.responses.length === 0 && this.systemProfile) {
+      this.responses.push({
+        role: 'system',
+        content: this.systemProfile,
+        metadata: {
+          timestamp: new Date().toISOString(),
+          provider: provider || this.services.defaultProvider,
+          model,
+        },
+      });
+    }
+
     const selectedProvider = (provider ||
       this.services.defaultProvider) as AIProvider;
     const timestamp = new Date().toISOString();
@@ -165,6 +189,7 @@ export class ChatService {
     const { originalText, text, images } = this.extractImagesFromText(prompt);
 
     let formattedPrompt;
+
     if (images.length > 0) {
       formattedPrompt = {
         role: 'user',
@@ -262,6 +287,13 @@ export class ChatService {
       console.log('History saved successfully!');
     } catch (error) {
       console.error('Failed to save history:', error);
+    }
+  }
+
+  setSystemProfile(profileId: string): void {
+    const profile = systemProfile.find((p) => p.id === profileId);
+    if (profile) {
+      this.systemProfile = profile.content;
     }
   }
 }

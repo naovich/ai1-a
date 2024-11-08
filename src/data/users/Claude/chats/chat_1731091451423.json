@@ -1,0 +1,27 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "qui es tu ?",
+      "metadata": {
+        "timestamp": "2024-11-08T18:44:17.935Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je suis un assistant virtuel développé par OpenAI, conçu pour aider à répondre à vos questions et fournir des informations sur une variété de sujets. Comment puis-je vous aider aujourd'hui ?",
+      "metadata": {
+        "timestamp": "2024-11-08T18:44:18.833Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-08T18:44:18.833Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "chat_1731091451423"
+  }
+}

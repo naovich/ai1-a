@@ -1,6 +1,7 @@
 # OpenAi Models end points
 
 https://platform.openai.com/docs/models/how-we-use-your-data
+// use node 20.18.0
 
 // authentification
 // chat multiple par user

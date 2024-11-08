@@ -85,4 +85,10 @@ export class ChatController {
   }> {
     return this.chatService.getChatHistory(chatId);
   }
+
+  @Post('profile')
+  setProfile(@Body('profileId') profileId: string) {
+    this.chatService.setSystemProfile(profileId);
+    return { success: true };
+  }
 }
