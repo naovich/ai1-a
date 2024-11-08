@@ -198,5 +198,94 @@
   {
     "role": "assistant",
     "content": "La Terre a un diamètre moyen d'environ 12 742 kilomètres."
+  },
+  {
+    "role": "user",
+    "content": "Quelle est la capitale de la Bretagne ?"
+  },
+  {
+    "role": "assistant",
+    "content": "La capitale de la Bretagne est Rennes.",
+    "refusal": null
+  },
+  {
+    "role": "user",
+    "content": "Quelle est la capitale du Nicaragua ?"
+  },
+  {
+    "role": "assistant",
+    "content": "La capitale du Nicaragua est Managua."
+  },
+  {
+    "role": "user",
+    "content": "Ou se trouve Paris ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Paris se trouve en France, en Europe occidentale."
+  },
+  {
+    "role": "user",
+    "content": "Quelle est la première question que j'ai posé ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Votre première question était \"Quelle est la première question que j'ai posé ?\""
+  },
+  {
+    "role": "user",
+    "content": "Quelle est la première question que j'ai posé ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Je suis désolé, mais je ne peux pas accéder à l'historique de vos interactions ou à vos questions précédentes. Puis-je vous aider avec autre chose ?"
+  },
+  {
+    "role": "user",
+    "content": "Quelle ta dernière réponse ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Je suis désolé, mais je ne peux pas fournir un historique des interactions précédentes ou de mes réponses antérieures. Comment puis-je vous aider aujourd'hui ?"
+  },
+  {
+    "role": "user",
+    "content": "Quelle modèle d'IAes tu ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Je suis un modèle d'intelligence artificielle développé par OpenAI, basé sur la série GPT-4."
+  },
+  {
+    "role": "user",
+    "content": "Quelle est la première question que j'ai posé ?"
+  },
+  {
+    "role": "assistant",
+    "content": "Votre première question était \"Quelle est la capitale de la Moldavie ?\"."
+  },
+  {
+    "role": "user",
+    "content": "Ok très bien"
+  },
+  {
+    "role": "assistant",
+    "content": "Noté! Si vous avez d'autres questions ou besoin d'aide, n'hésitez pas à me le dire."
+  },
+  {
+    "role": "user",
+    "content": "Ok très bien"
+  },
+  {
+    "role": "assistant",
+    "content": "Très bien! Si vous avez d'autres questions ou besoin d'aide, n'hésitez pas à me le dire."
+  },
+  {
+    "role": "user",
+    "content": "Je veux savoir l'age de la Terre"
+  },
+  {
+    "role": "assistant",
+    "content": "Désolé, je n'ai pas pu répondre à votre dernière question sur l'âge de la Terre. La Terre a environ 4,5 milliards d'années. Si vous avez d'autres questions, n'hésitez pas à les poser."
   }
 ]
