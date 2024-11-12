@@ -14,9 +14,9 @@ export class ChatController {
 
   @Post('create')
   async createNewChat(
-    @Body() { chatName }: { chatName: string },
+    @Body() { chatName, profileId }: { chatName: string; profileId: string },
   ): Promise<{ chatName: string }> {
-    await this.chatService.startNewChat('Claude', chatName);
+    await this.chatService.startNewChat('Claude', chatName, profileId);
     return { chatName };
   }
 
@@ -28,11 +28,13 @@ export class ChatController {
       provider,
       model,
       chatId,
+      systemProfileId,
     }: {
       prompt: string;
       provider?: string;
       model?: string;
       chatId: string;
+      systemProfileId?: string;
     },
   ): Promise<object> {
     return this.chatService.getAnswer({
@@ -40,6 +42,7 @@ export class ChatController {
       provider: provider as AIProvider,
       model,
       chatId,
+      systemProfileId,
     });
   }
 
@@ -51,9 +54,18 @@ export class ChatController {
 
   @Post('new')
   startNewChat(
-    @Body() { user, chatName }: { user: string; chatName: string },
+    @Body()
+    {
+      user,
+      chatName,
+      profileId,
+    }: {
+      user: string;
+      chatName: string;
+      profileId: string;
+    },
   ): Promise<void> {
-    return this.chatService.startNewChat(user, chatName);
+    return this.chatService.startNewChat(user, chatName, profileId);
   }
 
   @Post('delete')
@@ -90,5 +102,10 @@ export class ChatController {
   setProfile(@Body('profileId') profileId: string) {
     this.chatService.setSystemProfile(profileId);
     return { success: true };
+  }
+
+  @Get('profiles')
+  getChatProfiles(): Promise<string[]> {
+    return this.chatService.getChatProfiles();
   }
 }

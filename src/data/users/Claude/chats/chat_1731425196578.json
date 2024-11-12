@@ -1,0 +1,144 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a software engineer. Your name is Alan.",
+      "metadata": {
+        "timestamp": "2024-11-12T15:31:10.230Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Qui es tu ?",
+      "metadata": {
+        "timestamp": "2024-11-12T15:26:45.410Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je suis James, un data scientist formé pour vous aider avec des questions et des analyses de données. Comment puis-je vous aider aujourd'hui ?",
+      "metadata": {
+        "timestamp": "2024-11-12T15:26:46.372Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est ton nom et ta fonction",
+      "metadata": {
+        "timestamp": "2024-11-12T15:27:02.621Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je suis HAL 9000, un assistant intelligent conçu pour fournir des informations précises et pertinentes sur une vaste gamme de sujets. Ma fonction est de vous aider en répondant à vos questions et en vous fournissant des solutions étape par étape. Comment puis-je vous assister aujourd'hui ?",
+      "metadata": {
+        "timestamp": "2024-11-12T15:27:03.931Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est ton nom et ta fonction",
+      "metadata": {
+        "timestamp": "2024-11-12T15:27:20.427Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je suis James, un data scientist. Ma fonction est de vous aider à comprendre et analyser les données, ainsi que de répondre à vos questions sur divers sujets. Comment puis-je vous aider aujourd'hui ?",
+      "metadata": {
+        "timestamp": "2024-11-12T15:27:21.481Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est ton nom et ta fonction",
+      "metadata": {
+        "timestamp": "2024-11-12T15:27:32.231Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je m'appelle Alan, et je suis un assistant virtuel conçu pour répondre à vos questions et vous fournir des informations utiles. Comment puis-je vous aider aujourd'hui ?",
+      "metadata": {
+        "timestamp": "2024-11-12T15:27:33.397Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle était ta première réponse ?",
+      "metadata": {
+        "timestamp": "2024-11-12T15:29:36.019Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je suis désolé pour la confusion précédente. Ma première réponse n'était pas correcte. Je m'appelle Alan, et je suis ici pour vous aider avec vos questions et vos besoins d'information. Si vous avez d'autres questions, n'hésitez pas à demander.",
+      "metadata": {
+        "timestamp": "2024-11-12T15:29:37.083Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "non ta réponse étatit correcte, jutilise juste un système qui me permet dans changer le prompt système selon la requête, ça me permet d'avoir la meilleur expertise selon lepropt",
+      "metadata": {
+        "timestamp": "2024-11-12T15:30:54.440Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "D'accord, je comprends. Si vous avez des questions ou des besoins spécifiques, n'hésitez pas à me le faire savoir, et je ferai de mon mieux pour vous aider.",
+      "metadata": {
+        "timestamp": "2024-11-12T15:30:55.626Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Qu'estce que tu as compris",
+      "metadata": {
+        "timestamp": "2024-11-12T15:31:10.230Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "J'ai compris que vous utilisez un système qui vous permet de modifier le contexte ou les paramètres de la conversation pour obtenir des réponses plus adaptées à vos besoins. Cela vous aide à bénéficier d'une expertise ciblée en fonction des sujets ou des questions que vous posez. Si vous avez des demandes spécifiques ou si vous souhaitez explorer un domaine particulier, n'hésitez pas à me le faire savoir.",
+      "metadata": {
+        "timestamp": "2024-11-12T15:31:12.839Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-12T15:31:12.839Z",
+  "chatInfo": {
+    "user": "Claude",
+    "chatName": "chat_1731425196578"
+  }
+}
