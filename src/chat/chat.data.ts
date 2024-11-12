@@ -16,14 +16,14 @@ export const systemProfile: SystemProfilPros[] = [
   {
     id: 'SE',
     name: 'Software engineer',
-    content: 'You are a software engineer.',
+    content: 'You are a software engineer. Your name is Alan.',
     avatar:
       'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',
   },
   {
     id: 'DS',
     name: 'Data scientist',
-    content: 'You are a data scientist.',
+    content: 'You are a data scientist. Your name is James',
     avatar:
       'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',
   },

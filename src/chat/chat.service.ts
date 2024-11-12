@@ -10,6 +10,7 @@ export interface ChatResponseProps {
   model?: string;
   provider?: AIProvider;
   chatId: string;
+  systemProfileId?: string;
 }
 
 interface MessageMetadata {
@@ -43,6 +44,7 @@ export class ChatService {
   constructor(@Inject('AIService') private services: Services) {
     this.user = 'Claude';
     this.chatName = 'chat_1';
+    this.systemProfile = 'AGI';
     this.speechFile = './temp/audio/speech.mp3';
     this.initResponses();
   }
@@ -60,11 +62,15 @@ export class ChatService {
     }
   }
 
-  async startNewChat(user: string, chatName: string): Promise<void> {
+  async startNewChat(
+    user: string,
+    chatName: string,
+    profileId: string = 'AGI',
+  ): Promise<void> {
     this.user = user;
     this.chatName = chatName;
     this.responses = [];
-    this.setSystemProfile('AGI');
+    this.setSystemProfile(profileId);
     await this.initResponses();
   }
 
@@ -91,6 +97,10 @@ export class ChatService {
       await fs.mkdir(this.chatsPath, { recursive: true });
       return [];
     }
+  }
+
+  async getChatProfiles(): Promise<string[]> {
+    return systemProfile.map((p) => p.id);
   }
 
   async getChatHistory(chatId: string) {
@@ -165,21 +175,32 @@ export class ChatService {
     model,
     provider,
     chatId,
+    systemProfileId,
   }: ChatResponseProps): Promise<object> {
     this.chatName = chatId;
     const history = await this.getChatHistory(chatId);
     this.responses = history.messages;
 
-    if (this.responses.length === 0 && this.systemProfile) {
-      this.responses.push({
-        role: 'system',
+    if (systemProfileId) {
+      this.setSystemProfile(systemProfileId);
+    }
+
+    if (this.systemProfile) {
+      const systemMessage = {
+        role: 'system' as const,
         content: this.systemProfile,
         metadata: {
           timestamp: new Date().toISOString(),
           provider: provider || this.services.defaultProvider,
           model,
         },
-      });
+      };
+
+      if (this.responses.length > 0 && this.responses[0].role === 'system') {
+        this.responses[0] = systemMessage; // Remplace le message système existant
+      } else {
+        this.responses.unshift(systemMessage); // Ajoute le message système au début
+      }
     }
 
     const selectedProvider = (provider ||
