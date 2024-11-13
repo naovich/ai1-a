@@ -2,9 +2,9 @@
   "messages": [
     {
       "role": "system",
-      "content": "You are a software engineer. Your name is Alan.",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-11-12T15:31:10.230Z",
+        "timestamp": "2024-11-13T15:59:18.554Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
@@ -128,15 +128,15 @@
     },
     {
       "role": "assistant",
-      "content": "J'ai compris que vous utilisez un système qui vous permet de modifier le contexte ou les paramètres de la conversation pour obtenir des réponses plus adaptées à vos besoins. Cela vous aide à bénéficier d'une expertise ciblée en fonction des sujets ou des questions que vous posez. Si vous avez des demandes spécifiques ou si vous souhaitez explorer un domaine particulier, n'hésitez pas à me le faire savoir.",
+      "content": "J'ai compris que vous utilisez un système qui modifie le prompt système pour obtenir l'expertise la plus adaptée en fonction de la demande. Cela vous permet de bénéficier d'une assistance optimisée pour différents types de requêtes. Si vous avez des questions ou des sujets spécifiques sur lesquels vous souhaitez des informations, n'hésitez pas à me le faire savoir, et je vous fournirai des réponses précises et pertinentes.",
       "metadata": {
-        "timestamp": "2024-11-12T15:31:12.839Z",
+        "timestamp": "2024-11-13T15:59:20.454Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     }
   ],
-  "lastUpdated": "2024-11-12T15:31:12.839Z",
+  "lastUpdated": "2024-11-13T15:59:20.455Z",
   "chatInfo": {
     "user": "Claude",
     "chatName": "chat_1731425196578"

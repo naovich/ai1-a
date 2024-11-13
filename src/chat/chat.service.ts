@@ -11,6 +11,7 @@ export interface ChatResponseProps {
   provider?: AIProvider;
   chatId: string;
   systemProfileId?: string;
+  refresh?: boolean;
 }
 
 interface MessageMetadata {
@@ -176,10 +177,18 @@ export class ChatService {
     provider,
     chatId,
     systemProfileId,
+    refresh,
   }: ChatResponseProps): Promise<object> {
     this.chatName = chatId;
     const history = await this.getChatHistory(chatId);
     this.responses = history.messages;
+
+    if (refresh && this.responses.length > 0) {
+      const lastMessage = this.responses[this.responses.length - 1];
+      if (lastMessage.role === 'assistant') {
+        this.responses.pop();
+      }
+    }
 
     if (systemProfileId) {
       this.setSystemProfile(systemProfileId);
@@ -207,45 +216,47 @@ export class ChatService {
       this.services.defaultProvider) as AIProvider;
     const timestamp = new Date().toISOString();
 
-    const { originalText, text, images } = this.extractImagesFromText(prompt);
+    if (!refresh) {
+      const { originalText, text, images } = this.extractImagesFromText(prompt);
 
-    let formattedPrompt;
+      let formattedPrompt;
 
-    if (images.length > 0) {
-      formattedPrompt = {
-        role: 'user',
-        content: [
-          {
-            type: 'text',
-            text: originalText,
-          },
-          ...images.map((img) => ({
-            type: 'image_url',
-            image_url: {
-              url:
-                img.type === 'file'
-                  ? `data:image/jpeg;base64,${img.content}`
-                  : img.content,
+      if (images.length > 0) {
+        formattedPrompt = {
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: originalText,
             },
-          })),
-        ],
-      };
-    } else {
-      formattedPrompt = {
-        role: 'user',
-        content: text,
-      };
-    }
+            ...images.map((img) => ({
+              type: 'image_url',
+              image_url: {
+                url:
+                  img.type === 'file'
+                    ? `data:image/jpeg;base64,${img.content}`
+                    : img.content,
+              },
+            })),
+          ],
+        };
+      } else {
+        formattedPrompt = {
+          role: 'user',
+          content: text,
+        };
+      }
 
-    this.responses.push({
-      role: 'user',
-      content: formattedPrompt.content,
-      metadata: {
-        timestamp,
-        provider: selectedProvider,
-        model,
-      },
-    });
+      this.responses.push({
+        role: 'user',
+        content: formattedPrompt.content,
+        metadata: {
+          timestamp,
+          provider: selectedProvider,
+          model,
+        },
+      });
+    }
 
     const service = this.services[selectedProvider];
     if (!service) {
@@ -316,5 +327,12 @@ export class ChatService {
     if (profile) {
       this.systemProfile = profile.content;
     }
+  }
+
+  async generateVoice(text: string): Promise<void> {
+    const buffer = await this.services.openai.generateSpeech(text);
+    console.log(text);
+    const path = './temp/audio/speech.mp3';
+    await fs.writeFile(path, buffer);
   }
 }

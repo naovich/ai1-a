@@ -1,6 +1,15 @@
 {
   "messages": [
     {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-13T14:50:48.563Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
       "role": "user",
       "content": [
         {
@@ -93,9 +102,27 @@
         "provider": "openai",
         "model": "claude-3-5-sonnet-20241022"
       }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est l'environnement de l'image",
+      "metadata": {
+        "timestamp": "2024-11-13T14:50:48.563Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'image est prise dans ce qui semble être un parc ou une aire de repos. On peut voir :\n- Un chemin ou une petite route avec des marquages au sol\n- Des arbres en arrière-plan\n- Un abri ou un kiosque couvert dans le fond\n- De l'herbe/terrain sec\n- Une aire assez dégagée et un ciel aux teintes dorées suggérant que la photo a été prise en fin de journée\n- Des équipements/structures (peut-être une aire de jeux) visibles au loin\n\nL'ensemble donne l'impression d'un espace public aménagé, probablement un parc ou une aire de détente.",
+      "metadata": {
+        "timestamp": "2024-11-13T14:50:53.500Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
     }
   ],
-  "lastUpdated": "2024-10-31T06:41:21.980Z",
+  "lastUpdated": "2024-11-13T14:50:53.500Z",
   "chatInfo": {
     "user": "Claude",
     "chatName": "chat_1730287670513"
