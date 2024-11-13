@@ -317,4 +317,11 @@ export class ChatService {
       this.systemProfile = profile.content;
     }
   }
+
+  async generateVoice(text: string): Promise<void> {
+    const buffer = await this.services.openai.generateSpeech(text);
+    console.log(text);
+    const path = './temp/audio/speech.mp3';
+    await fs.writeFile(path, buffer);
+  }
 }

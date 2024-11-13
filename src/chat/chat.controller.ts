@@ -47,7 +47,12 @@ export class ChatController {
   }
 
   @Get('stream')
-  streamAudio(@Res() res: Response) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  streamAudio(@Res() res: Response, @Query('t') _timestamp: string) {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+
     const filePath = './temp/audio/speech.mp3';
     res.sendFile(filePath, { root: '.' });
   }
@@ -107,5 +112,10 @@ export class ChatController {
   @Get('profiles')
   getChatProfiles(): Promise<string[]> {
     return this.chatService.getChatProfiles();
+  }
+
+  @Post('generate-voice')
+  async generateVoice(@Body() { text }: { text: string }): Promise<void> {
+    return this.chatService.generateVoice(text);
   }
 }
