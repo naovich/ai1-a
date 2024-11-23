@@ -46,7 +46,7 @@ export class ChatService {
     this.user = 'admin';
     this.chatName = 'chat_1';
     this.systemProfile = 'AGI';
-    this.speechFile = './temp/audio/speech.mp3';
+    this.speechFile = './temp/users/admin/audio/downloads/speech.mp3';
     this.initResponses();
   }
 
@@ -286,21 +286,6 @@ export class ChatService {
     await this.saveHistory();
     return message;
   }
-
-  async generateSpeech(text: string): Promise<void> {
-    const buffer = await this.services.openai.generateSpeech(text);
-    await fs.writeFile(this.speechFile, buffer);
-  }
-
-  async generateChatSpeech(text: string): Promise<void> {
-    const response: any = await this.getAnswer({
-      prompt: text,
-      chatId: this.chatName,
-    });
-    const buffer = await this.services.openai.generateSpeech(response.content);
-    await fs.writeFile(this.speechFile, buffer);
-  }
-
   async saveHistory(): Promise<void> {
     const path = `${filePath}${this.user}/chats/`;
     const fullPath = `${path}${this.chatName}.json`;
@@ -327,12 +312,5 @@ export class ChatService {
     if (profile) {
       this.systemProfile = profile.content;
     }
-  }
-
-  async generateVoice(text: string): Promise<void> {
-    const buffer = await this.services.openai.generateSpeech(text);
-    console.log(text);
-    const path = './temp/audio/speech.mp3';
-    await fs.writeFile(path, buffer);
   }
 }

@@ -55,8 +55,7 @@ export class ChatController {
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
-
-    const filePath = './temp/audio/speech.mp3';
+    const filePath = './temp/users/admin/audio/downloads/speech.mp3';
     res.sendFile(filePath, { root: '.' });
   }
 
@@ -83,17 +82,6 @@ export class ChatController {
     return this.chatService.deleteChat(user, chatName);
   }
 
-  @Post('postChatSpeech')
-  generateChatSpeech(@Body() { text }: { text: string }): Promise<void> {
-    return this.chatService.generateChatSpeech(text);
-  }
-
-  @Get('getChatSpeech')
-  getGenerateChatSpeech(@Query('text') text: string): Promise<void> {
-    console.log('text', text);
-    return this.chatService.generateChatSpeech(text);
-  }
-
   @Get('history/:chatId')
   async getChatHistory(@Param('chatId') chatId: string): Promise<{
     messages: ChatMessage[];
@@ -115,10 +103,5 @@ export class ChatController {
   @Get('profiles')
   getChatProfiles(): Promise<string[]> {
     return this.chatService.getChatProfiles();
-  }
-
-  @Post('generate-voice')
-  async generateVoice(@Body() { text }: { text: string }): Promise<void> {
-    return this.chatService.generateVoice(text);
   }
 }

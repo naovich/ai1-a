@@ -4,9 +4,9 @@
       "role": "system",
       "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-11-13T16:12:36.042Z",
-        "provider": "anthropic",
-        "model": "claude-3-5-sonnet-20241022"
+        "timestamp": "2024-11-23T17:49:06.927Z",
+        "provider": "openai",
+        "model": "gpt-4o"
       }
     },
     {
@@ -62,11 +62,29 @@
         "provider": "anthropic",
         "model": "claude-3-5-sonnet-20241022"
       }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est la capitale du Nicaragua ?",
+      "metadata": {
+        "timestamp": "2024-11-23T17:49:06.927Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La capitale du Nicaragua est Managua. Située sur la rive sud du lac de Managua, la ville est le centre politique, économique et culturel du pays. Fondée en 1819, elle est devenue la capitale en 1852, remplaçant les anciennes capitales de León et Granada, en raison de leur rivalité historique. Managua a connu une croissance rapide, malgré les défis posés par des séismes dévastateurs, notamment en 1931 et 1972. Aujourd'hui, elle abrite la majorité des institutions gouvernementales et est un important centre pour le commerce et l'industrie du Nicaragua.",
+      "metadata": {
+        "timestamp": "2024-11-23T17:49:08.659Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
     }
   ],
-  "lastUpdated": "2024-11-13T16:12:40.164Z",
+  "lastUpdated": "2024-11-23T17:49:08.659Z",
   "chatInfo": {
-    "user": "Claude",
+    "user": "admin",
     "chatName": "chat_1731505810948"
   }
 }
