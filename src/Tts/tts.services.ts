@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { promises as fs } from 'fs';
-
 import OpenAI from 'openai';
+import { createReadStream } from 'fs';
 
 const openai = new OpenAI();
 const speechFile = './temp/audio/speech.mp3';
@@ -14,9 +14,22 @@ export class TtsService {
       voice: 'alloy',
       input: text,
     });
-    console.log(speechFile);
     const buffer = Buffer.from(await mp3.arrayBuffer());
-    console.log(buffer);
     await fs.writeFile(speechFile, buffer);
+  }
+
+  async transcribeAudio(filePath: string): Promise<string> {
+    try {
+      const transcription = await openai.audio.transcriptions.create({
+        file: createReadStream(filePath),
+        model: 'whisper-1',
+        response_format: 'text',
+      });
+
+      return transcription;
+    } catch (error) {
+      console.error('Erreur lors de la transcription:', error);
+      throw error;
+    }
   }
 }

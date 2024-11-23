@@ -39,11 +39,11 @@ export class ChatService {
   private chatName: string;
   private user: string;
   private speechFile: string;
-  private chatsPath = './src/data/users/Claude/chats/';
+  private chatsPath = './src/data/users/admin/chats/';
   private systemProfile: string = '';
 
   constructor(@Inject('AIService') private services: Services) {
-    this.user = 'Claude';
+    this.user = 'admin';
     this.chatName = 'chat_1';
     this.systemProfile = 'AGI';
     this.speechFile = './temp/audio/speech.mp3';

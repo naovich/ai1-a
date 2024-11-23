@@ -16,7 +16,7 @@ export class ChatController {
   async createNewChat(
     @Body() { chatName, profileId }: { chatName: string; profileId: string },
   ): Promise<{ chatName: string }> {
-    await this.chatService.startNewChat('Claude', chatName, profileId);
+    await this.chatService.startNewChat('admin', chatName, profileId);
     return { chatName };
   }
 

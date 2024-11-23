@@ -1,0 +1,65 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-23T16:08:47.070Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "https://images.unsplash.com/photo-1731532034431-be28681ed7b7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D décrit l'image"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://images.unsplash.com/photo-1731532034431-be28681ed7b7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-21T16:35:15.485Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'image montre un paysage serein avec une grande cascade en arrière-plan. Devant la cascade, il y a un torii, une structure traditionnelle japonaise, qui donne accès à un sanctuaire ou un espace sacré. Autour, on observe une dense forêt de conifères et des bâtiments traditionnels avec des toits en pente. Une personne se tient sur une place pavée, ajoutant une échelle à l'ensemble de la scène. L'atmosphère est paisible et naturelle, mettant en valeur la beauté de la nature et l'architecture japonaise.",
+      "metadata": {
+        "timestamp": "2024-11-21T16:35:21.221Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Peux-tu me dire où a été prise l'image ?\n et dis-moi également le lieu et puis le temps qu'il fait",
+      "metadata": {
+        "timestamp": "2024-11-23T16:08:47.070Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je ne peux pas déterminer l'endroit exact où l'image a été prise, mais elle semble représenter un lieu au Japon, probablement un site avec un sanctuaire près d'une cascade. Le temps paraît nuageux ou couvert, étant donné l'absence de lumière directe du soleil et l'atmosphère légèrement sombre.",
+      "metadata": {
+        "timestamp": "2024-11-23T16:08:51.505Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-23T16:08:51.505Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732206867129"
+  }
+}
