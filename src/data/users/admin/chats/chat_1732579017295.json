@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-25T23:57:04.739Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quel est la météo à Paris",
+      "metadata": {
+        "timestamp": "2024-11-25T23:57:04.739Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La météo à Paris aujourd'hui, le 25 novembre 2024, indique une température de 9°C avec des conditions de pluie modérée. L'humidité est à 97 %, et le vent souffle à 11 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-25T23:57:06.927Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-25T23:57:06.927Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732579017295"
+  }
+}

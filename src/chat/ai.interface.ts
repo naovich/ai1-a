@@ -27,13 +27,19 @@ export interface AIResponse {
   model?: string;
 }
 
+export interface AITool {
+  name: string;
+  execute: (...args: any[]) => Promise<any>;
+  getSchema: () => any;
+}
+
 export interface AIService {
   getAnswer(
     prompt: string,
     systemContent?: string,
     model?: string,
   ): Promise<AIResponse>;
-  generateSpeech(text: string): Promise<Buffer>;
+  generateSpeech?(text: string): Promise<Buffer>;
 }
 
 export interface ChatContent {

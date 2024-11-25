@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-25T21:46:38.507Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "donne moi la date du jour en espagnol",
+      "metadata": {
+        "timestamp": "2024-11-25T21:46:38.507Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Hoy es el 25 de noviembre de 2024.\n",
+      "metadata": {
+        "timestamp": "2024-11-25T21:46:41.769Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-25T21:46:41.769Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732571179941"
+  }
+}

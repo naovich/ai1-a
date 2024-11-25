@@ -1,0 +1,54 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:40:29.048Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quel est la météo de jeudi",
+      "metadata": {
+        "timestamp": "2024-11-26T00:40:10.983Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Pour obtenir la météo de jeudi, pourriez-vous me préciser la ville qui vous intéresse ?",
+      "metadata": {
+        "timestamp": "2024-11-26T00:40:11.930Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Paris",
+      "metadata": {
+        "timestamp": "2024-11-26T00:40:29.048Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La météo pour Paris ce jeudi prévoit une température d'environ 8°C avec un ciel partiellement nuageux. L'humidité sera autour de 59%, et le vent soufflera à une vitesse de 6 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:40:31.774Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-26T00:40:31.774Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732581596204"
+  }
+}

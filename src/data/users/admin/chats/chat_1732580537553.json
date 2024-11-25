@@ -1,0 +1,54 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:22:45.403Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "donne-moi la météo pour dans 2 jours",
+      "metadata": {
+        "timestamp": "2024-11-26T00:22:31.789Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Pour quelle ville souhaitez-vous obtenir les prévisions météorologiques ?",
+      "metadata": {
+        "timestamp": "2024-11-26T00:22:33.631Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "paris",
+      "metadata": {
+        "timestamp": "2024-11-26T00:22:45.403Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La météo à Paris dans deux jours, le 28 novembre 2024, prévoit des conditions partiellement nuageuses. La température sera d'environ 8°C, avec une humidité de 59% et un vent soufflant à 6 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:22:47.925Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-26T00:22:47.926Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732580537553"
+  }
+}
