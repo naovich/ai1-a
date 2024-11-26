@@ -1,0 +1,144 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:57:12.607Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "demain, à quel heure il fera le plus chaud ?",
+      "metadata": {
+        "timestamp": "2024-11-26T00:53:25.196Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Pour déterminer l'heure à laquelle il fera le plus chaud demain, je dois d'abord obtenir les prévisions météorologiques pour demain. Veuillez spécifier la ville pour laquelle vous souhaitez connaître cette information.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:53:27.776Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Paris",
+      "metadata": {
+        "timestamp": "2024-11-26T00:53:42.756Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je n'ai pas accès aux prévisions météorologiques horaires exactes pour Paris demain. Cependant, généralement, la température maximale de la journée se produit entre 15h et 17h, selon les conditions météorologiques et la saison. Pour des prévisions précises, je vous recommande de consulter un service météo local ou une application météo demain matin.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:53:46.164Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quel temps il fera à Paris demain ?",
+      "metadata": {
+        "timestamp": "2024-11-26T00:54:14.115Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Demain à Paris, la température sera d'environ 9°C avec des conditions de légère pluie. L'humidité sera élevée, autour de 95%, et le vent soufflera à environ 11 km/h. Assurez-vous de prendre un parapluie si vous prévoyez de sortir !",
+      "metadata": {
+        "timestamp": "2024-11-26T00:54:16.283Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quel est la température à Sydney actuellement",
+      "metadata": {
+        "timestamp": "2024-11-26T00:54:57.965Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "À Sydney, il fait actuellement 31°C avec un ciel dégagé. L'humidité est de 53% et le vent souffle à 19 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:54:59.861Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "et à new york",
+      "metadata": {
+        "timestamp": "2024-11-26T00:55:52.960Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Actuellement, à New York, il fait environ 10°C avec un ciel couvert. L'humidité est de 56%, et le vent souffle à 11 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:55:54.923Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "et à ottawa ?",
+      "metadata": {
+        "timestamp": "2024-11-26T00:56:38.412Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Actuellement, à Ottawa, il fait environ 0°C avec un ciel nuageux. L'humidité est de 85%, et le vent souffle à 7 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:56:41.002Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "et à la capital de l'argentine ?",
+      "metadata": {
+        "timestamp": "2024-11-26T00:57:12.607Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Actuellement, à Buenos Aires, la capitale de l'Argentine, il fait environ 22°C avec un ciel couvert. L'humidité est de 79%, et le vent souffle à 40 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T00:57:14.761Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-26T00:57:14.761Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732582397403"
+  }
+}

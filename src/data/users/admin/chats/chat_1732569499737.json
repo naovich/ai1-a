@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-25T21:18:31.569Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quell jour sommes nous",
+      "metadata": {
+        "timestamp": "2024-11-25T21:18:31.569Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Aujourd'hui, nous sommes le 25 novembre 2024.",
+      "metadata": {
+        "timestamp": "2024-11-25T21:18:33.093Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-25T21:18:33.093Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732569499737"
+  }
+}

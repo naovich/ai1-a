@@ -1,0 +1,72 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-26T01:04:47.032Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est la météo pour demain à Paris?",
+      "metadata": {
+        "timestamp": "2024-11-26T00:59:48.852Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La météo pour demain à Paris prévoit une température de 9°C avec de légères pluies. L'humidité sera élevée, à environ 95%, et le vent soufflera à une vitesse de 7 km/h. Assurez-vous de prendre un parapluie si vous sortez !",
+      "metadata": {
+        "timestamp": "2024-11-26T00:59:51.058Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "et dansla capitale de l'afrique du sud ?",
+      "metadata": {
+        "timestamp": "2024-11-26T01:02:51.190Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Demain à Pretoria, la capitale de l'Afrique du Sud, la météo prévoit une température d'environ 20°C avec un temps nuageux. L'humidité sera autour de 62 %, et le vent soufflera à une vitesse de 7 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T01:02:53.454Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "et la température maximal ?",
+      "metadata": {
+        "timestamp": "2024-11-26T01:04:47.032Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La température maximale prévue pour demain à Pretoria est d'environ 20°C. Pour Paris, la température maximale sera d'environ 9°C.",
+      "metadata": {
+        "timestamp": "2024-11-26T01:04:49.989Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-26T01:04:49.990Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732582776353"
+  }
+}
