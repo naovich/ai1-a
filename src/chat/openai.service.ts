@@ -140,12 +140,12 @@ export class OpenAIService extends AIToolManager implements AIService {
     }
   }
 
-  async generateSpeech(text: string): Promise<Buffer> {
+  /*async generateSpeech(text: string): Promise<Buffer> {
     const mp3 = await this.openai.audio.speech.create({
       model: 'tts-1',
       voice: 'alloy',
       input: text,
     });
     return Buffer.from(await mp3.arrayBuffer());
-  }
+  }*/
 }

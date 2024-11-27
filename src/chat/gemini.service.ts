@@ -189,7 +189,7 @@ export class GeminiService extends AIToolManager implements AIService {
       };
     }
   }
-
+  /*
   async generateSpeech(text: string): Promise<Buffer> {
     const mp3 = await this.openai.audio.speech.create({
       model: 'tts-1',
@@ -198,7 +198,7 @@ export class GeminiService extends AIToolManager implements AIService {
     });
     return Buffer.from(await mp3.arrayBuffer());
   }
-
+*/
   private async formatMessageContent(content: any): Promise<any[]> {
     if (Array.isArray(content)) {
       const formattedParts = [];
