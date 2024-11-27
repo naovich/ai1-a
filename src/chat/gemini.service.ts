@@ -7,50 +7,16 @@ import { AIService, AIProvider, AIResponse } from './ai.interface';
 import OpenAI from 'openai';
 import fetch from 'node-fetch';
 import { Buffer } from 'buffer';
-import { AIToolManager } from './skills/AIToolManager';
-import { defaultTools } from './skills';
 
 type ModelProps = 'gemini-pro' | 'gemini-1.5-flash' | 'gemini-1.5-pro';
 
-export class GeminiService extends AIToolManager implements AIService {
+export class GeminiService implements AIService {
   private genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
   private openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
 
   private defaultModel: ModelProps = 'gemini-1.5-pro';
-
-  constructor() {
-    super();
-    defaultTools.forEach((tool) => this.registerTool(tool));
-  }
-
-  protected getGeminiToolSchemas() {
-    return this.getToolSchemas().map((tool) => ({
-      functionDeclarations: [
-        {
-          name: tool.function.name,
-          description: tool.function.description,
-          parameters: {
-            type: tool.function.parameters.type,
-            properties: Object.entries(
-              tool.function.parameters.properties,
-            ).reduce(
-              (acc, [key, value]) => ({
-                ...acc,
-                [key]: {
-                  type: (value as any).type,
-                  description: (value as any).description,
-                },
-              }),
-              {},
-            ),
-            required: tool.function.parameters.required,
-          },
-        },
-      ],
-    }));
-  }
 
   async getAnswer(
     prompt: string,
@@ -117,7 +83,6 @@ export class GeminiService extends AIToolManager implements AIService {
             threshold: HarmBlockThreshold.BLOCK_NONE,
           },
         ],
-        tools: this.getGeminiToolSchemas(),
       });
 
       // Obtenir le dernier message (la dernière entrée de l'utilisateur)
@@ -129,30 +94,6 @@ export class GeminiService extends AIToolManager implements AIService {
       try {
         const result = await chat.sendMessage(formattedLastMessage);
         const response = await result.response;
-
-        // Vérifier si une fonction a été appelée
-        if (response.candidates?.[0]?.content?.parts?.[0]?.functionCall) {
-          const functionCall =
-            response.candidates[0].content.parts[0].functionCall;
-          const result = await this.executeTool(
-            functionCall.name,
-            functionCall.args,
-          );
-
-          // Envoyer le résultat de la fonction
-          const finalResult = await chat.sendMessage(JSON.stringify(result));
-          return {
-            role: 'assistant',
-            content: finalResult.response.text(),
-            provider: 'gemini' as AIProvider,
-            metadata: {
-              timestamp: new Date().toISOString(),
-              model: model,
-              responseTime: Date.now() - startTime,
-              status: 'success',
-            },
-          };
-        }
 
         return {
           role: 'assistant',

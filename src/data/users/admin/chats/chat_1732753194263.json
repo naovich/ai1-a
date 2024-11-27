@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-28T00:30:47.235Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quel est le cours du bitcoin actuel",
+      "metadata": {
+        "timestamp": "2024-11-28T00:23:41.162Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue lors du traitement de votre demande.",
+      "metadata": {
+        "timestamp": "2024-11-28T00:30:47.597Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-28T00:30:47.598Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732753194263"
+  }
+}

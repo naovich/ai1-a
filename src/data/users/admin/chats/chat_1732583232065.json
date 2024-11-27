@@ -4,7 +4,7 @@
       "role": "system",
       "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-11-26T01:18:59.992Z",
+        "timestamp": "2024-11-26T21:29:53.700Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
@@ -44,9 +44,45 @@
         "provider": "openai",
         "model": "gpt-4o"
       }
+    },
+    {
+      "role": "user",
+      "content": "quelle jour sommes-nous ?",
+      "metadata": {
+        "timestamp": "2024-11-26T21:26:54.512Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Nous sommes le 26 novembre 2024.",
+      "metadata": {
+        "timestamp": "2024-11-26T21:26:56.121Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "météo à Paris",
+      "metadata": {
+        "timestamp": "2024-11-26T21:29:53.700Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Actuellement à Paris, la température est d'environ 8°C avec une brume persistante. L'humidité est à 97%, et le vent souffle à 9 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-26T21:29:55.424Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
     }
   ],
-  "lastUpdated": "2024-11-26T01:19:02.167Z",
+  "lastUpdated": "2024-11-26T21:29:55.424Z",
   "chatInfo": {
     "user": "admin",
     "chatName": "chat_1732583232065"
