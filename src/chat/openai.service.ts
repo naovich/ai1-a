@@ -18,15 +18,10 @@ export class OpenAIService extends AIToolManager implements AIService {
 
   async getAnswer(
     prompt: string,
-    systemContent: string = '',
     model: ModelProps = this.defaultModel,
   ): Promise<AIResponse> {
-    const startTime = Date.now();
     try {
       const formattedMessages = [];
-      if (systemContent) {
-        formattedMessages.push({ role: 'system', content: systemContent });
-      }
 
       try {
         const parsedPrompt = JSON.parse(prompt);
@@ -141,7 +136,6 @@ export class OpenAIService extends AIToolManager implements AIService {
         metadata: {
           timestamp: new Date().toISOString(),
           model: completion.model,
-          responseTime: Date.now() - startTime,
           tokens: {
             prompt: completion.usage?.prompt_tokens || 0,
             completion: completion.usage?.completion_tokens || 0,
@@ -161,7 +155,6 @@ export class OpenAIService extends AIToolManager implements AIService {
         metadata: {
           timestamp: new Date().toISOString(),
           model: model,
-          responseTime: Date.now() - startTime,
           status: 'error',
           errorDetails: {
             code: error.code || 'UNKNOWN',
@@ -171,13 +164,4 @@ export class OpenAIService extends AIToolManager implements AIService {
       };
     }
   }
-
-  /*async generateSpeech(text: string): Promise<Buffer> {
-    const mp3 = await this.openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'alloy',
-      input: text,
-    });
-    return Buffer.from(await mp3.arrayBuffer());
-  }*/
 }

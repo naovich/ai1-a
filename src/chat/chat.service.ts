@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { AIProvider, AIService } from './ai.interface';
 import * as fs from 'fs/promises';
 import { systemProfile } from './chat.data';
+import { getMimeTypeFromDataUrl } from 'src/utils';
 
 const filePath = './src/data/users/';
 
@@ -33,12 +34,18 @@ interface Services {
   defaultProvider: AIProvider;
 }
 
+interface ImageData {
+  type: 'url' | 'file';
+  content: string;
+  mimeType?: string;
+}
+
 @Injectable()
 export class ChatService {
   private responses: ChatMessage[] = [];
   private chatName: string;
   private user: string;
-  private speechFile: string;
+  //private speechFile: string;
   private chatsPath = './src/data/users/admin/chats/';
   private systemProfile: string = '';
 
@@ -46,7 +53,7 @@ export class ChatService {
     this.user = 'admin';
     this.chatName = 'chat_1';
     this.systemProfile = 'AGI';
-    this.speechFile = './temp/users/admin/audio/downloads/speech.mp3';
+    //  this.speechFile = './temp/users/admin/audio/downloads/speech.mp3';
     this.initResponses();
   }
 
@@ -123,7 +130,7 @@ export class ChatService {
         messages: [],
         lastUpdated: new Date().toISOString(),
         chatInfo: {
-          user: 'Claude',
+          user: 'admin',
           chatName: chatId,
         },
       };
@@ -133,7 +140,7 @@ export class ChatService {
   private extractImagesFromText(content: string | any[]): {
     originalText: string;
     text: string;
-    images: { type: 'url' | 'file'; content: string }[];
+    images: ImageData[];
   } {
     if (Array.isArray(content)) {
       const textContent =
@@ -144,11 +151,13 @@ export class ChatService {
           type: item.image_url.url.startsWith('data:')
             ? 'file'
             : ('url' as 'url' | 'file'),
+          mimeType: item.image_url.url.startsWith('data:')
+            ? getMimeTypeFromDataUrl(item.image_url.url)
+            : null,
           content: item.image_url.url.startsWith('data:')
             ? item.image_url.url.split(',')[1]
             : item.image_url.url,
         }));
-
       return {
         originalText: textContent,
         text: textContent,
@@ -194,7 +203,7 @@ export class ChatService {
       this.setSystemProfile(systemProfileId);
     }
 
-    if (this.systemProfile) {
+    if (systemProfileId) {
       const systemMessage = {
         role: 'system' as const,
         content: this.systemProfile,
@@ -234,7 +243,7 @@ export class ChatService {
               image_url: {
                 url:
                   img.type === 'file'
-                    ? `data:image/jpeg;base64,${img.content}`
+                    ? `data:${img.mimeType};base64,${img.content}`
                     : img.content,
               },
             })),
@@ -271,7 +280,7 @@ export class ChatService {
       })),
     );
 
-    const message = await service.getAnswer(messagesForProvider, '', model);
+    const message = await service.getAnswer(messagesForProvider, model);
 
     this.responses.push({
       role: 'assistant',
