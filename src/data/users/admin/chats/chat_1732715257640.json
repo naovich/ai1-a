@@ -1,0 +1,108 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-27T13:57:54.915Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle est le résultat du match bayern - psg (mardi 27 novembre 2024)",
+      "metadata": {
+        "timestamp": "2024-11-27T13:47:48.500Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je suis désolé, mais je n'ai pas accès aux résultats des événements futurs ni à des mises à jour en temps réel. Pour obtenir le résultat du match entre le Bayern Munich et le PSG du 27 novembre 2024, je vous recommande de consulter des sites sportifs renommés comme ESPN ou de vérifier les applications mobiles dédiées au sport qui fournissent des scores en direct et des mises à jour.",
+      "metadata": {
+        "timestamp": "2024-11-27T13:47:51.951Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle est le prix de l'action Tesla actuellement",
+      "metadata": {
+        "timestamp": "2024-11-27T13:49:22.387Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Pour connaître le prix actuel de l'action Tesla (TSLA), je vous recommande de consulter des sites financiers fiables comme Yahoo Finance, Google Finance ou Bloomberg. Vous pouvez également vérifier les applications de courtage en ligne ou celles dédiées aux marchés boursiers pour obtenir des informations en temps réel. Voici un lien vers Yahoo Finance où vous pouvez trouver ces informations : [Yahoo Finance - Tesla, Inc. (TSLA)](https://finance.yahoo.com/quote/TSLA/).",
+      "metadata": {
+        "timestamp": "2024-11-27T13:49:25.797Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle est la météo à Paris",
+      "metadata": {
+        "timestamp": "2024-11-27T13:50:00.010Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Actuellement, à Paris, la température est de 12°C avec une bruine légère. L'humidité est à 94% et le vent souffle à 28 km/h.",
+      "metadata": {
+        "timestamp": "2024-11-27T13:54:48.319Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle est le prix du bitcoin actuellement ?",
+      "metadata": {
+        "timestamp": "2024-11-27T13:55:23.857Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Le prix actuel du Bitcoin (BTC) est de 93,339.34 USD, selon CoinDesk, avec un volume de transactions sur 24 heures de 10,47 milliards USD. Pour des mises à jour en temps réel, vous pouvez consulter des sites comme [CoinDesk](https://www.coindesk.com/price/bitcoin).",
+      "metadata": {
+        "timestamp": "2024-11-27T13:55:26.292Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle est la météo à Paris",
+      "metadata": {
+        "timestamp": "2024-11-27T13:57:54.915Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Pour connaître la météo actuelle à Paris, je vous recommande de consulter des sites fiables comme [Météo France](https://meteofrance.com/previsions-meteo-france/paris/75000) ou [Météo & Radar](https://www.meteoetradar.com/meteo/paris/11702777). Ces sites fournissent des prévisions détaillées et actualisées pour la ville.",
+      "metadata": {
+        "timestamp": "2024-11-27T13:57:57.810Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-27T13:57:57.810Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732715257640"
+  }
+}

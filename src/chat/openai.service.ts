@@ -36,16 +36,38 @@ export class OpenAIService extends AIToolManager implements AIService {
             content: Array.isArray(msg.content)
               ? msg.content.map((item) => {
                   if (typeof item === 'string') return item;
+
+                  // Vérifie si c'est une URL d'image
+                  const isImageUrl = (url: string) => {
+                    // Vérifie les extensions communes d'images
+                    if (/\.(jpg|jpeg|png|gif|webp|svg|bmp)$/i.test(url))
+                      return true;
+                    // Vérifie si l'URL commence par data:image
+                    if (url.startsWith('data:image/')) return true;
+                    // Pour les autres URLs, vérifie si elles contiennent des indicateurs d'images
+                    return /\/(image|img|photo|picture)\/?/i.test(url);
+                  };
+
+                  // Si c'est une URL d'image, on la traite comme telle
+                  if (
+                    item.type === 'image_url' &&
+                    isImageUrl(item.image_url.url)
+                  ) {
+                    return {
+                      type: 'image_url',
+                      image_url: {
+                        url: item.image_url.url,
+                      },
+                    };
+                  }
+
+                  // Sinon, on la traite comme du texte
                   return {
-                    type: item.type,
-                    ...(item.type === 'text' ? { text: item.text } : {}),
-                    ...(item.type === 'image_url'
-                      ? {
-                          image_url: {
-                            url: item.image_url.url,
-                          },
-                        }
-                      : {}),
+                    type: 'text',
+                    text:
+                      item.type === 'image_url'
+                        ? item.image_url.url
+                        : item.text,
                   };
                 })
               : msg.content,
@@ -58,7 +80,9 @@ export class OpenAIService extends AIToolManager implements AIService {
       const hasImages = formattedMessages.some(
         (msg) =>
           Array.isArray(msg.content) &&
-          msg.content.some((item) => item.type === 'image_url'),
+          msg.content.some(
+            (item) => item.type === 'image_url' && item.image_url?.url,
+          ),
       );
 
       const completion = await this.openai.chat.completions.create({
@@ -82,14 +106,22 @@ export class OpenAIService extends AIToolManager implements AIService {
               JSON.parse(toolCall.function.arguments),
             );
             return {
-              role: 'tool',
-              content: JSON.stringify(result),
+              role: 'tool' as const,
+              content: JSON.stringify(result) || '[]',
               tool_call_id: toolCall.id,
             };
           }),
         );
 
-        formattedMessages.push(...toolResults);
+        // Ajouter les résultats des outils dans l'ordre correct
+        toolCalls.forEach((toolCall) => {
+          const toolResult = toolResults.find(
+            (result) => result.tool_call_id === toolCall.id,
+          );
+          if (toolResult) {
+            formattedMessages.push(toolResult);
+          }
+        });
 
         // Faire un deuxième appel pour obtenir la réponse finale
         const secondCompletion = await this.openai.chat.completions.create({

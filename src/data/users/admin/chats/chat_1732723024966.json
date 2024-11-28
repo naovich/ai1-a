@@ -1,0 +1,105 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-27T15:58:36.215Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "décrit cette image https://images.unsplash.com/photo-1660984382431-2c2a59120e98?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://images.unsplash.com/photo-1660984382431-2c2a59120e98?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-27T15:57:41.713Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'image montre un chemin pavé sinueux bordé de végétation luxuriante et de clôtures en bois. Sur la droite, deux maisons pittoresques avec des toits de chaume se dressent au milieu d'une brume dense. Les maisons ont un style traditionnel avec des murs blancs et des éléments en bois. L'environnement est verdoyant et humide, créant une atmosphère mystique et sereine. Un grand arbre se trouve à droite du chemin, renforçant l'impression de nature abondante.",
+      "metadata": {
+        "timestamp": "2024-11-27T15:57:46.666Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "décrit cette image https://media.cnn.com/api/v1/images/stellar/prod/fx3-3564-mp4-13-03-31-05-still001.jpeg?q=w_1160,c_fill/f_webp"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://media.cnn.com/api/v1/images/stellar/prod/fx3-3564-mp4-13-03-31-05-still001.jpeg?q=w_1160,c_fill/f_webp"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-27T15:58:02.104Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'image montre un homme barbu portant un pull à col zippé, assis sur un canapé ou un fauteuil. L'arrière-plan est intérieur, avec un mur décoré de papier peint à motifs floraux. Un objet cylindrique est fixé au mur derrière lui. L'éclairage est tamisé, créant une atmosphère intime et tranquille.",
+      "metadata": {
+        "timestamp": "2024-11-27T15:58:06.273Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "que dis cette article https://fr.news.yahoo.com/mozambique-nouvelles-manifestations-femme-fauch%C3%A9e-142154064.html"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://fr.news.yahoo.com/mozambique-nouvelles-manifestations-femme-fauch%C3%A9e-142154064.html"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-27T15:58:36.215Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je n'ai pas pu trouver l'article spécifique sur les manifestations au Mozambique concernant la femme fauchée. Pour plus d'informations, je vous recommande de vérifier directement sur le site de Yahoo Actualités ou de faire une recherche avec des mots-clés pertinents.",
+      "metadata": {
+        "timestamp": "2024-11-27T15:58:44.900Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-27T15:58:44.900Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732723024966"
+  }
+}
