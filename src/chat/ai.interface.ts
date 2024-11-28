@@ -3,7 +3,6 @@ export type AIProvider = 'openai' | 'anthropic' | 'gemini';
 export interface MessageMetadata {
   timestamp: string;
   model: string;
-  responseTime: number;
   status: 'success' | 'error';
   tokens?: {
     prompt: number;

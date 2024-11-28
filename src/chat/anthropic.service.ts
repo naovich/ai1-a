@@ -1,6 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { AIService, AIProvider, AIResponse } from './ai.interface';
-import OpenAI from 'openai';
 import fetch from 'node-fetch';
 import { Buffer } from 'buffer';
 
@@ -9,40 +8,38 @@ export class AnthropicService implements AIService {
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
 
-  private openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
   private defaultModel = 'claude-3-5-sonnet-20241022';
+  private MAX_TOKENS = 4096;
+  private TEMPERATURE = 0.7;
 
   async getAnswer(
     prompt: string,
-    systemContent: string = '',
     model: string = this.defaultModel,
   ): Promise<AIResponse> {
-    const startTime = Date.now();
     let messages;
-
     try {
       messages = JSON.parse(prompt);
     } catch {
       messages = [{ role: 'user', content: prompt }];
     }
 
-    // Process messages to format content appropriately
-    const anthropicMessages = await Promise.all(
+    const formattedAllMessages = await Promise.all(
       messages.map(async (msg) => ({
-        role: msg.role === 'assistant' ? 'assistant' : 'user',
+        role: msg.role,
         content: await this.formatMessageContent(msg.content),
       })),
     );
 
+    const systemMessage = formattedAllMessages.at(0)?.content[0]?.text ?? '';
+    const history = formattedAllMessages.slice(1);
+
     try {
       const response = await this.anthropic.messages.create({
         model: model,
-        max_tokens: 1024,
-        messages: anthropicMessages,
-        system: systemContent,
+        max_tokens: this.MAX_TOKENS,
+        temperature: this.TEMPERATURE,
+        system: systemMessage,
+        messages: history,
       });
 
       // Process the response to extract the assistant's reply
@@ -66,7 +63,6 @@ export class AnthropicService implements AIService {
         metadata: {
           timestamp: new Date().toISOString(),
           model: response.model,
-          responseTime: Date.now() - startTime,
           tokens: {
             prompt: response.usage.input_tokens,
             completion: response.usage.output_tokens,
@@ -86,7 +82,6 @@ export class AnthropicService implements AIService {
         metadata: {
           timestamp: new Date().toISOString(),
           model: model,
-          responseTime: Date.now() - startTime,
           status: 'error',
           errorDetails: {
             code: error.code || 'UNKNOWN',
@@ -153,7 +148,6 @@ export class AnthropicService implements AIService {
                 'application/octet-stream';
               imageData = Buffer.from(arrayBuffer).toString('base64');
             }
-
             formattedContent.push({
               type: 'image',
               source: {
@@ -175,14 +169,5 @@ export class AnthropicService implements AIService {
     } else {
       return [{ type: 'text', text: content }];
     }
-  }
-
-  async generateSpeech(text: string): Promise<Buffer> {
-    const mp3 = await this.openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'alloy',
-      input: text,
-    });
-    return Buffer.from(await mp3.arrayBuffer());
   }
 }

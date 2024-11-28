@@ -4,7 +4,6 @@ import {
   HarmBlockThreshold,
 } from '@google/generative-ai';
 import { AIService, AIProvider, AIResponse } from './ai.interface';
-import OpenAI from 'openai';
 import fetch from 'node-fetch';
 import { Buffer } from 'buffer';
 
@@ -12,21 +11,14 @@ type ModelProps = 'gemini-pro' | 'gemini-1.5-flash' | 'gemini-1.5-pro';
 
 export class GeminiService implements AIService {
   private genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-  private openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
   private defaultModel: ModelProps = 'gemini-1.5-pro';
+  private MAX_TOKENS = 4096;
 
   async getAnswer(
     prompt: string,
-    systemContent: string = '',
     model: ModelProps = this.defaultModel,
   ): Promise<AIResponse> {
-    const startTime = Date.now();
-
     try {
-      // Parser 'prompt' en tableau de messages
       let formattedMessages: any[];
       try {
         formattedMessages = JSON.parse(prompt);
@@ -36,34 +28,20 @@ export class GeminiService implements AIService {
 
       const geminiModel = this.genAI.getGenerativeModel({ model: model });
 
-      // Préparer l'historique initial
-      const initialHistory = systemContent
-        ? [{ role: 'user', parts: [{ text: systemContent }] }]
-        : [];
-
-      // Formater les messages d'historique pour Gemini
-      const history = await Promise.all(
-        formattedMessages.slice(0, -1).map(async (msg) => {
-          try {
-            return {
-              role: msg.role === 'assistant' ? 'model' : 'user',
-              parts: await this.formatMessageContent(msg.content),
-            };
-          } catch (error) {
-            console.error('Error formatting message in history:', error);
-            return {
-              role: msg.role === 'assistant' ? 'model' : 'user',
-              parts: [{ text: this.extractTextOnly(msg.content) }],
-            };
-          }
-        }),
+      const formattedAllMessages = await Promise.all(
+        formattedMessages.map(async (msg) => ({
+          role: msg.role === 'assistant' ? 'model' : 'user',
+          parts: await this.formatMessageContent(msg.content),
+        })),
       );
 
-      // Démarrer le chat avec l'historique formaté
+      const history = formattedAllMessages.slice(0, -1).filter(Boolean);
+      const formattedLastMessage = formattedAllMessages.at(-1)?.parts;
+
       const chat = geminiModel.startChat({
-        history: [...initialHistory, ...history].filter(Boolean),
+        history: history,
         generationConfig: {
-          maxOutputTokens: 1000,
+          maxOutputTokens: this.MAX_TOKENS,
         },
         safetySettings: [
           {
@@ -85,12 +63,6 @@ export class GeminiService implements AIService {
         ],
       });
 
-      // Obtenir le dernier message (la dernière entrée de l'utilisateur)
-      const lastMessage = formattedMessages[formattedMessages.length - 1];
-      const formattedLastMessage = await this.formatMessageContent(
-        lastMessage.content,
-      );
-
       try {
         const result = await chat.sendMessage(formattedLastMessage);
         const response = await result.response;
@@ -102,7 +74,6 @@ export class GeminiService implements AIService {
           metadata: {
             timestamp: new Date().toISOString(),
             model: model,
-            responseTime: Date.now() - startTime,
             status: 'success',
           },
         };
@@ -120,7 +91,6 @@ export class GeminiService implements AIService {
         metadata: {
           timestamp: new Date().toISOString(),
           model: model,
-          responseTime: Date.now() - startTime,
           status: 'error',
           errorDetails: {
             code: error.code || 'UNKNOWN',
@@ -129,15 +99,6 @@ export class GeminiService implements AIService {
         },
       };
     }
-  }
-
-  async generateSpeech(text: string): Promise<Buffer> {
-    const mp3 = await this.openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'alloy',
-      input: text,
-    });
-    return Buffer.from(await mp3.arrayBuffer());
   }
 
   private async formatMessageContent(content: any): Promise<any[]> {
@@ -183,15 +144,5 @@ export class GeminiService implements AIService {
     }
 
     return [{ text: content }];
-  }
-
-  private extractTextOnly(content: any): string {
-    if (Array.isArray(content)) {
-      return content
-        .filter((item) => item.type === 'text')
-        .map((item) => item.text)
-        .join(' ');
-    }
-    return content.toString();
   }
 }

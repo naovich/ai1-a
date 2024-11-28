@@ -1,0 +1,47 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:33:06.468Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "que dit cet article https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-28T22:33:06.468Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "The article on the OpenAI Cookbook titled \"Processing and narrating a video with GPT's visual capabilities and the TTS API\" demonstrates how to leverage GPT-4's visual capabilities to understand and narrate videos. Although GPT-4o (a variant of GPT-4) cannot directly process video input, it can analyze static frames from a video using a large context window to provide a comprehensive description. The article outlines two examples:\n\n1. **Video Description**: Using OpenCV, frames are extracted from a video of bisons and wolves. These frames are then passed to the GPT model to generate a descriptive narrative that could accompany the video. The description includes thematic elements such as \"Epic Wildlife Showdown: Wolves vs. Bison in the Snow\" to captivate the audience.\n\n2. **Voiceover Generation**: The same video frames are used to prompt GPT to create a voiceover script in the style of David Attenborough. This script narrates the action in a dramatic and engaging style, capturing the essence of the wildlife struggle. The script is then converted into audio using the Text-to-Speech (TTS) API, generating a voiceover that enhances the video's storytelling.\n\nThe article provides code snippets and a step-by-step guide for extracting video frames, creating prompts, generating descriptions, and synthesizing voiceovers, showcasing how AI can enrich multimedia content with thoughtful narration and analysis.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:33:12.512Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-28T22:33:12.513Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732833182220"
+  }
+}

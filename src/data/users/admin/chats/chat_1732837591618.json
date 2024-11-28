@@ -1,0 +1,90 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-28T23:58:09.190Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle jour et heure sommes nous",
+      "metadata": {
+        "timestamp": "2024-11-28T23:47:01.419Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Nous sommes le 28 novembre 2024. Il est 00:50 UTC.",
+      "metadata": {
+        "timestamp": "2024-11-28T23:50:01.903Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle est le prix actuel de l'action Tesla ?",
+      "metadata": {
+        "timestamp": "2024-11-28T23:51:48.580Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Le prix actuel de l'action Tesla (TSLA) est de 332,89 USD à la clôture du 27 novembre 2024. Après les heures de marché, le prix est monté à 334,40 USD. Veuillez noter que les prix des actions peuvent varier et il est toujours bon de vérifier les dernières cotations pour des informations à jour.",
+      "metadata": {
+        "timestamp": "2024-11-28T23:56:17.270Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "j'ai dis le prix il y a 2 jours",
+      "metadata": {
+        "timestamp": "2024-11-28T23:56:59.133Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Le prix de l'action Tesla (TSLA) le 26 novembre 2024 était de **338,23 USD** à la clôture de la journée.",
+      "metadata": {
+        "timestamp": "2024-11-28T23:57:02.002Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    },
+    {
+      "role": "user",
+      "content": "donne moi le code d'un composant react typescript d'un numericStepper",
+      "metadata": {
+        "timestamp": "2024-11-28T23:58:09.190Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Voici un exemple de code pour un composant `NumericStepper` en React avec TypeScript. Ce composant permet d'incrémenter et de décrémenter une valeur numérique :\n\n```tsx\nimport React, { useState } from 'react';\n\ninterface NumericStepperProps {\n  initialValue?: number;\n  min?: number;\n  max?: number;\n  step?: number;\n}\n\nconst NumericStepper: React.FC<NumericStepperProps> = ({\n  initialValue = 0,\n  min = 0,\n  max = 100,\n  step = 1,\n}) => {\n  const [value, setValue] = useState<number>(initialValue);\n\n  const increment = () => {\n    if (value + step <= max) {\n      setValue(value + step);\n    }\n  };\n\n  const decrement = () => {\n    if (value - step >= min) {\n      setValue(value - step);\n    }\n  };\n\n  return (\n    <div>\n      <button onClick={decrement} disabled={value <= min}>\n        -\n      </button>\n      <span>{value}</span>\n      <button onClick={increment} disabled={value >= max}>\n        +\n      </button>\n    </div>\n  );\n};\n\nexport default NumericStepper;\n```\n\n### Explication :\n- **Props** :\n  - `initialValue`: Valeur initiale du compteur (0 par défaut).\n  - `min`: Valeur minimale (0 par défaut).\n  - `max`: Valeur maximale (100 par défaut).\n  - `step`: Valeur d'incrément (1 par défaut).\n  \n- **State** : Utilise le hook `useState` pour gérer la valeur actuelle.\n\n- **Fonctions** :\n  - `increment`: Augmente la valeur si elle est inférieure à la valeur maximale.\n  - `decrement`: Diminue la valeur si elle est supérieure à la valeur minimale.\n\n- **Rendu** : Affiche deux boutons pour incrémenter et décrémenter la valeur, ainsi que la valeur actuelle.\n\nVous pouvez intégrer ce composant dans votre application React en l'importante et en l'utilisant comme suit :\n\n```tsx\n<NumericStepper initialValue={10} min={0} max={20} step={2} />\n```\n\nCela créera un stepper numérique avec une valeur initiale de 10, un minimum de 0, un maximum de 20 et une étape de 2.",
+      "metadata": {
+        "timestamp": "2024-11-28T23:58:19.516Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-28T23:58:19.516Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732837591618"
+  }
+}

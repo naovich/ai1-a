@@ -1,0 +1,76 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:55:33.616Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "décris https://plus.unsplash.com/premium_photo-1664871748707-b30a413ad7bc?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://plus.unsplash.com/premium_photo-1664871748707-b30a413ad7bc?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-28T22:46:10.598Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'image montre une personne debout contre un mur de couleur beige, vêtu d'une robe jaune fluide. La lumière du soleil projette des ombres de branches d'arbres sur le mur, créant un motif délicat. L'ambiance est lumineuse et semble capturer un moment de calme et de tranquillité.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:46:14.927Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "que dis cette article https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-28T22:47:19.390Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "The article from the OpenAI Cookbook provides a detailed guide on how to use GPT's visual capabilities to process and narrate videos. It demonstrates how to extract frames from a video and use GPT-4o to generate a compelling description of the video content. The process involves using OpenCV to read video frames, converting these frames to base64 format, and sending them to GPT to generate a narrative. Additionally, it covers how to create a voiceover script in the style of David Attenborough using the same video frames, and then generating an audio narration with the TTS API. The example given in the article involves a video of wolves and bison, demonstrating how to create both a descriptive text and a narrated voiceover for the video.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:55:37.003Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-28T22:55:37.003Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732833946106"
+  }
+}

@@ -2,6 +2,7 @@ import OpenAI from 'openai';
 import { AIService, AIProvider, AIResponse } from './ai.interface';
 import { AIToolManager } from './skills/AIToolManager';
 import { defaultTools } from './skills';
+import { isImageUrl } from 'src/utils';
 
 type ModelProps = 'gpt-4o-mini' | 'gpt-4o' | 'o1-mini' | 'o1-preview';
 
@@ -10,6 +11,7 @@ export class OpenAIService extends AIToolManager implements AIService {
     apiKey: process.env.OPENAI_API_KEY,
   });
   private defaultModel: ModelProps = 'gpt-4o';
+  private MAX_TOKENS = 4096;
 
   constructor() {
     super();
@@ -18,15 +20,10 @@ export class OpenAIService extends AIToolManager implements AIService {
 
   async getAnswer(
     prompt: string,
-    systemContent: string = '',
     model: ModelProps = this.defaultModel,
   ): Promise<AIResponse> {
-    const startTime = Date.now();
     try {
       const formattedMessages = [];
-      if (systemContent) {
-        formattedMessages.push({ role: 'system', content: systemContent });
-      }
 
       try {
         const parsedPrompt = JSON.parse(prompt);
@@ -36,17 +33,6 @@ export class OpenAIService extends AIToolManager implements AIService {
             content: Array.isArray(msg.content)
               ? msg.content.map((item) => {
                   if (typeof item === 'string') return item;
-
-                  // Vérifie si c'est une URL d'image
-                  const isImageUrl = (url: string) => {
-                    // Vérifie les extensions communes d'images
-                    if (/\.(jpg|jpeg|png|gif|webp|svg|bmp)$/i.test(url))
-                      return true;
-                    // Vérifie si l'URL commence par data:image
-                    if (url.startsWith('data:image/')) return true;
-                    // Pour les autres URLs, vérifie si elles contiennent des indicateurs d'images
-                    return /\/(image|img|photo|picture)\/?/i.test(url);
-                  };
 
                   // Si c'est une URL d'image, on la traite comme telle
                   if (
@@ -89,7 +75,7 @@ export class OpenAIService extends AIToolManager implements AIService {
         messages: formattedMessages,
         model: hasImages ? 'gpt-4o' : model,
         temperature: 0.7,
-        max_completion_tokens: 1000,
+        max_completion_tokens: this.MAX_TOKENS,
         tools: this.getToolSchemas(),
         tool_choice: 'auto',
       });
@@ -105,6 +91,7 @@ export class OpenAIService extends AIToolManager implements AIService {
               toolCall.function.name,
               JSON.parse(toolCall.function.arguments),
             );
+
             return {
               role: 'tool' as const,
               content: JSON.stringify(result) || '[]',
@@ -141,7 +128,6 @@ export class OpenAIService extends AIToolManager implements AIService {
         metadata: {
           timestamp: new Date().toISOString(),
           model: completion.model,
-          responseTime: Date.now() - startTime,
           tokens: {
             prompt: completion.usage?.prompt_tokens || 0,
             completion: completion.usage?.completion_tokens || 0,
@@ -161,7 +147,6 @@ export class OpenAIService extends AIToolManager implements AIService {
         metadata: {
           timestamp: new Date().toISOString(),
           model: model,
-          responseTime: Date.now() - startTime,
           status: 'error',
           errorDetails: {
             code: error.code || 'UNKNOWN',
@@ -171,13 +156,4 @@ export class OpenAIService extends AIToolManager implements AIService {
       };
     }
   }
-
-  /*async generateSpeech(text: string): Promise<Buffer> {
-    const mp3 = await this.openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'alloy',
-      input: text,
-    });
-    return Buffer.from(await mp3.arrayBuffer());
-  }*/
 }

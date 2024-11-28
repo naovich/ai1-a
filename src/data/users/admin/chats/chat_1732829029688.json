@@ -1,0 +1,83 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:05:06.321Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "qui est san goku ?",
+      "metadata": {
+        "timestamp": "2024-11-28T21:24:14.595Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "San Goku, connu principalement sous le nom de Son Goku, est un personnage fictif et le protagoniste principal du célèbre manga et anime japonais \"Dragon Ball\", créé par Akira Toriyama. Il est un Saiyan, membre d'une race extraterrestre de guerriers, connu pour sa force exceptionnelle et sa capacité à se transformer en Super Saiyan, augmentant ainsi ses pouvoirs de manière significative.\n\nGoku est reconnu pour son esprit combatif, son désir constant de devenir plus fort, et sa personnalité joviale et bienveillante. Il est souvent impliqué dans des batailles pour protéger la Terre et l'univers contre divers ennemis puissants. Goku est également célèbre pour ses techniques de combat emblématiques, telles que le Kamehameha, une puissante attaque d'énergie. Son personnage a eu une influence considérable sur la culture populaire, et il est l'un des héros les plus emblématiques dans le genre des mangas et animes.",
+      "metadata": {
+        "timestamp": "2024-11-28T21:24:17.010Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "dans le manga comment naisse les kaio shin ?",
+      "metadata": {
+        "timestamp": "2024-11-28T21:25:04.611Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Dans le manga \"Dragon Ball\", les Kaioshin, également connus sous le nom de \"Supreme Kais\" en anglais, sont des divinités qui gouvernent les univers. Leur naissance et leur existence diffèrent de celle des mortels ordinaires et sont entourées d'un certain mystère.\n\nLes Kaioshin naissent à partir d'un arbre spécial appelé l'Arbre Kaiju, qui produit des fruits dorés. Chaque fruit doré qui mûrit correctement donne naissance à un Kaioshin. Il est important de noter que tous les fruits de cet arbre ne deviennent pas des Kaioshin; certains deviennent des Kaios, qui sont des dieux de niveau inférieur chargés de surveiller différentes parties de l'univers.\n\nLes Kaioshin ont une longévité exceptionnelle et possèdent des pouvoirs divins considérables. Ils jouent un rôle crucial dans le maintien de l'équilibre cosmique, et leur devoir principal est de créer et de préserver la vie, contrairement aux Dieux de la Destruction, qui sont chargés de détruire pour maintenir cet équilibre.\n\nL'univers de \"Dragon Ball\" comporte de nombreux éléments mythologiques et fantastiques, et les Kaioshin en font partie, ajoutant de la profondeur à la cosmologie de la série.",
+      "metadata": {
+        "timestamp": "2024-11-28T21:25:08.172Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "que di cet article https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-28T22:05:06.321Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:05:06.632Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-28T22:05:06.632Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732829029688"
+  }
+}

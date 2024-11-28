@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-28T23:13:35.279Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "que dis cette article",
+      "metadata": {
+        "timestamp": "2024-11-28T23:12:02.924Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Pourriez-vous me fournir le lien ou le titre de l'article que vous souhaitez que je consulte ? Cela m'aidera à accéder directement à son contenu.",
+      "metadata": {
+        "timestamp": "2024-11-28T23:13:36.134Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-28T23:13:36.134Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732835515246"
+  }
+}

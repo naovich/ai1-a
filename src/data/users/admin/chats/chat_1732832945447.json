@@ -1,0 +1,47 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:29:14.134Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "que dit cet article https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-28T22:29:14.134Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'article sur la page [OpenAI Cookbook](https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding) explique comment utiliser les capacités visuelles de GPT avec une vidéo. L'exemple démontre comment décrire une vidéo et créer une narration vocale en utilisant GPT-4 et l'API de synthèse vocale (TTS).\n\nVoici les étapes principales décrites :\n\n1. **Description de la vidéo :**\n   - Utilisation d'OpenCV pour extraire des images d'une vidéo (par exemple, une vidéo de bisons et de loups dans la nature).\n   - Envoi de certaines images à GPT-4 pour générer une description attrayante de la vidéo. Par exemple, une description pourrait être une mise en scène dramatique de la confrontation entre les loups et les bisons dans un cadre enneigé.\n\n2. **Génération d'une narration vocale :**\n   - Utilisation des mêmes images pour demander à GPT-4 de créer un script de narration dans le style de David Attenborough.\n   - Le script obtenu peut être utilisé pour générer une narration vocale grâce à l'API TTS, créant ainsi un fichier audio qui peut être intégré à la vidéo.\n\nCe processus permet de transformer une vidéo en une expérience enrichie, avec une narration descriptive et engageante basée sur les capacités de compréhension visuelle de GPT.",
+      "metadata": {
+        "timestamp": "2024-11-28T22:29:20.332Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-28T22:29:20.332Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732832945447"
+  }
+}
