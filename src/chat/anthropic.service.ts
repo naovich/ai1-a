@@ -1,9 +1,11 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { AIService, AIProvider, AIResponse } from './ai.interface';
+import { AIService, AIProvider, AIResponse, AITool } from './ai.interface';
 import fetch from 'node-fetch';
 import { Buffer } from 'buffer';
-
-export class AnthropicService implements AIService {
+import { AIToolManager } from './skills/AIToolManager';
+import { defaultTools } from './skills';
+import { isImageUrl } from 'src/utils';
+export class AnthropicService extends AIToolManager implements AIService {
   private anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
@@ -11,6 +13,28 @@ export class AnthropicService implements AIService {
   private defaultModel = 'claude-3-5-sonnet-20241022';
   private MAX_TOKENS = 4096;
   private TEMPERATURE = 0.7;
+
+  constructor() {
+    super();
+    defaultTools.forEach((tool) => this.registerTool(tool));
+  }
+
+  protected getTools(): AITool[] {
+    return Array.from(this.tools.values());
+  }
+
+  private convertToolToAnthropicFormat(tool: AITool) {
+    const parameters = tool.getSchema().parameters || {};
+    return {
+      name: tool.name,
+      description: tool.getSchema().description,
+      input_schema: {
+        type: 'object' as const,
+        properties: parameters,
+        required: Object.keys(parameters),
+      },
+    };
+  }
 
   async getAnswer(
     prompt: string,
@@ -40,25 +64,95 @@ export class AnthropicService implements AIService {
         temperature: this.TEMPERATURE,
         system: systemMessage,
         messages: history,
+        tools: this.getTools().map((tool) => ({
+          name: tool.getSchema().function.name,
+          description: tool.getSchema().function.description,
+          input_schema: {
+            type: 'object',
+            properties: tool.getSchema().function.parameters.properties,
+            required: tool.getSchema().function.parameters.required,
+          },
+        })),
+        tool_choice: { type: 'auto' },
       });
 
-      // Process the response to extract the assistant's reply
-      const assistantContent = response.content
-        .map((item) => {
+      if (response.content.some((item) => item.type === 'tool_use')) {
+        const toolResults = await Promise.all(
+          response.content.map(async (item) => {
+            if (item.type === 'tool_use') {
+              const result = await this.executeTool(item.name, item.input);
+              return {
+                tool_call_id: item.id,
+                content: JSON.stringify(result),
+                tool_name: item.name,
+              };
+            }
+            return null;
+          }),
+        ).then((results) => results.filter(Boolean));
+
+        const finalResponse = await this.anthropic.messages.create({
+          model: model,
+          max_tokens: this.MAX_TOKENS,
+          temperature: this.TEMPERATURE,
+          system: systemMessage,
+          messages: [
+            ...history,
+            { role: 'assistant', content: response.content },
+            {
+              role: 'user',
+              content: toolResults.map((result) => ({
+                type: 'tool_result',
+                tool_use_id: result.tool_call_id,
+                content: result.content,
+              })),
+            },
+          ],
+          tools: this.getTools().map((tool) =>
+            this.convertToolToAnthropicFormat(tool),
+          ),
+          tool_choice: { type: 'auto' },
+        });
+
+        return {
+          role: 'assistant',
+          content: finalResponse.content
+            .filter((item) => item.type === 'text')
+            .map((item) => (item.type === 'text' ? item.text : ''))
+            .join(' '),
+          provider: 'anthropic' as AIProvider,
+          metadata: {
+            timestamp: new Date().toISOString(),
+            model: finalResponse.model,
+            tokens: {
+              prompt: finalResponse.usage.input_tokens,
+              completion: finalResponse.usage.output_tokens,
+              total:
+                finalResponse.usage.input_tokens +
+                finalResponse.usage.output_tokens,
+            },
+            status: 'success',
+            messageId: finalResponse.id,
+            stopReason: finalResponse.stop_reason,
+          },
+        };
+      }
+
+      const assistantContent = await Promise.all(
+        response.content.map(async (item) => {
           if (item.type === 'text') {
             return item.text;
           } else if (item.type === 'tool_use') {
-            // Handle tool use responses
-            return '[Tool Use]';
-          } else {
-            return '';
+            const toolResult = await this.executeTool(item.name, item.input);
+            return `[Résultat ${item.name}: ${toolResult}]`;
           }
-        })
-        .join(' ');
+          return '';
+        }),
+      );
 
       return {
         role: 'assistant',
-        content: assistantContent,
+        content: assistantContent.join(' '),
         provider: 'anthropic' as AIProvider,
         metadata: {
           timestamp: new Date().toISOString(),
@@ -91,8 +185,8 @@ export class AnthropicService implements AIService {
       };
     }
   }
+
   private async formatMessageContent(content: any): Promise<any[]> {
-    // Helper function to validate base64 strings
     function isValidBase64(str: string): boolean {
       try {
         return (
@@ -112,13 +206,15 @@ export class AnthropicService implements AIService {
             type: 'text',
             text: item.text,
           });
-        } else if (item.type === 'image_url') {
+        } else if (
+          item.type === 'image_url' &&
+          isImageUrl(item.image_url.url)
+        ) {
           try {
             let imageData: string;
             let mediaType: string;
 
             if (item.image_url.url.startsWith('data:')) {
-              // Extract media type and base64 data from data URL
               const dataUrlRegex = /^data:(.+?);base64,(.+)$/;
               const matches = item.image_url.url.match(dataUrlRegex);
 
@@ -126,13 +222,10 @@ export class AnthropicService implements AIService {
                 mediaType = matches[1];
                 imageData = matches[2];
 
-                // Decode URL-encoded base64 data
                 imageData = decodeURIComponent(imageData);
 
-                // Remove any whitespace or line breaks
                 imageData = imageData.replace(/\s/g, '');
 
-                // Validate base64 data
                 if (!isValidBase64(imageData)) {
                   throw new Error('Invalid base64 image data');
                 }
@@ -140,7 +233,6 @@ export class AnthropicService implements AIService {
                 throw new Error('Invalid data URL format');
               }
             } else {
-              // Fetch image from URL
               const response = await fetch(item.image_url.url);
               const arrayBuffer = await response.arrayBuffer();
               mediaType =

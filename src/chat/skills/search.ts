@@ -42,6 +42,8 @@ export class SearchTool implements AITool {
   }
 
   private cleanQuery(query: string): string {
+    if (!query) return '';
+
     return query
       .replace(/\b2023\b/g, '')
       .replace(/\b(october|octobre)\b/gi, '')
@@ -56,13 +58,15 @@ export class SearchTool implements AITool {
     country?: string;
   }): Promise<SearchResponse[]> {
     try {
-      // Nettoyer la requête
-      //const cleanedQuery = this.cleanQuery(params.query);
-      const cleanedQuery = this.cleanQuery(params.query);
+      if (!params?.query) {
+        console.log('❌ Requête de recherche manquante');
+        return [];
+      }
 
+      const cleanedQuery = this.cleanQuery(params.query);
+      console.log(`📝 Requête de recherche: "${cleanedQuery}"`);
       console.log(`🔍 Nombre de résultats demandés: ${params.numResults}`);
       console.log(`🌍 Pays de recherche: ${params.country || 'us'}`);
-      console.log(`📝 Requête de recherche: "${cleanedQuery}"`);
 
       const extractUrl = (text: string): string | null => {
         const cleanedText = text.replace(
@@ -205,9 +209,9 @@ export class SearchTool implements AITool {
             country: {
               type: 'string',
               description:
-                'Country code for search (e.g., fr, us, uk, de, es, it). Default: us. ' +
+                'Use us even if the language is french. Use fr for french subject. Country code for search (e.g., us, fr). Default: us.' +
                 'Used only for keyword searches.',
-              enum: ['fr', 'us', 'uk', 'de', 'es', 'it'],
+              enum: ['us', 'fr', 'uk'],
             },
             fetchContent: {
               type: 'boolean',
