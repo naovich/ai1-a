@@ -1,0 +1,90 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-29T01:30:34.758Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle heure est-il ?",
+      "metadata": {
+        "timestamp": "2024-11-29T00:59:15.684Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue.",
+      "metadata": {
+        "timestamp": "2024-11-29T01:16:04.254Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "user",
+      "content": "2+2",
+      "metadata": {
+        "timestamp": "2024-11-29T01:20:59.646Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La réponse est simple : 2 + 2 = 4.\n\nC'est une opération arithmétique basique d'addition qui fait partie des fondamentaux des mathématiques. Pour arriver à ce résultat, on peut penser étape par étape :\n\n1. On part avec le premier nombre : 2\n2. On y ajoute le deuxième nombre : 2\n3. La somme donne : 4\n\nCette équation est l'une des premières que l'on apprend à l'école et elle est universelle - elle reste vraie quel que soit le contexte ou la langue utilisée.",
+      "metadata": {
+        "timestamp": "2024-11-29T01:21:03.599Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "user",
+      "content": "l'heure stp",
+      "metadata": {
+        "timestamp": "2024-11-29T01:21:10.589Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue.",
+      "metadata": {
+        "timestamp": "2024-11-29T01:26:43.683Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "user",
+      "content": "pourquoi   type: 'tool_result', dans le deuxième appel pourquoi on fait pas comme openai une requete normal avec le resultats de la recherche et la question",
+      "metadata": {
+        "timestamp": "2024-11-29T01:28:28.658Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue.",
+      "metadata": {
+        "timestamp": "2024-11-29T01:30:37.059Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-29T01:30:37.059Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732841951953"
+  }
+}

@@ -191,6 +191,8 @@ export class ChatService {
     const history = await this.getChatHistory(chatId);
     this.responses = history.messages;
 
+    console.log('*********** DEBUT ***************');
+
     if (refresh && this.responses.length > 0) {
       const lastMessage = this.responses[this.responses.length - 1];
       if (lastMessage.role === 'assistant') {
@@ -313,6 +315,7 @@ export class ChatService {
     } catch (error) {
       console.error('Failed to save history:', error);
     }
+    console.log('*********** FIN ***************');
   }
 
   setSystemProfile(profileId: string): void {

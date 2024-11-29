@@ -60,6 +60,7 @@ export class WeatherTool implements AITool {
       const response = await axios.get(
         `${this.BASE_URL}/weather?q=${city}&appid=${this.API_KEY}&units=metric&lang=fr`,
       );
+      console.log(response.data);
       return this.formatWeatherResponse(response.data, params);
     } catch (error: any) {
       console.error('Erreur météo:', error);

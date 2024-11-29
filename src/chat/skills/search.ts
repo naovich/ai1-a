@@ -42,6 +42,8 @@ export class SearchTool implements AITool {
   }
 
   private cleanQuery(query: string): string {
+    if (!query) return '';
+
     return query
       .replace(/\b2023\b/g, '')
       .replace(/\b(october|octobre)\b/gi, '')
@@ -55,9 +57,19 @@ export class SearchTool implements AITool {
     fetchContent?: boolean;
     country?: string;
   }): Promise<SearchResponse[]> {
+    console.log('🔎 Search params:', {
+      rawParams: params,
+      paramType: typeof params,
+      query: params?.query,
+      isString: typeof params === 'string',
+    });
+
     try {
-      // Nettoyer la requête
-      //const cleanedQuery = this.cleanQuery(params.query);
+      if (!params?.query) {
+        console.log('❌ Requête de recherche manquante');
+        return [];
+      }
+
       const cleanedQuery = this.cleanQuery(params.query);
 
       console.log(`🔍 Nombre de résultats demandés: ${params.numResults}`);
