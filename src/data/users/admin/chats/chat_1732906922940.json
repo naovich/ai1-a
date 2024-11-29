@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-29T19:04:22.463Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est le cours du bitcoin actuellement",
+      "metadata": {
+        "timestamp": "2024-11-29T19:02:19.284Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Je ne peux pas vous donner le cours actuel du Bitcoin en temps réel.  Les cours des cryptomonnaies fluctuent constamment.\n\nPour obtenir le cours actuel, je vous recommande de consulter une source fiable telle que :\n\n* **Plateformes d'échange de cryptomonnaies:**  Binance, Coinbase, Kraken, etc.\n* **Sites web d'informations financières:** Google Finance, Yahoo Finance, Bloomberg, etc.\n* **Applications mobiles de suivi des cours:** Blockfolio, CoinMarketCap, etc.\n\nCes sources mettent à jour les cours du Bitcoin en temps réel ou quasi réel.\n",
+      "metadata": {
+        "timestamp": "2024-11-29T19:04:26.069Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-29T19:04:26.070Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732906922940"
+  }
+}

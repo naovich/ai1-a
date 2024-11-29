@@ -19,9 +19,9 @@ export class AnthropicService extends AIToolManager implements AIService {
     defaultTools.forEach((tool) => this.registerTool(tool));
   }
 
-  protected getTools(): AITool[] {
+  /*protected getTools(): AITool[] {
     return Array.from(this.tools.values());
-  }
+  }*/
 
   private convertToolToAnthropicFormat(tool: AITool) {
     const parameters = tool.getSchema().parameters || {};

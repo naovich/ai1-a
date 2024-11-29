@@ -1,0 +1,90 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-29T21:05:44.884Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est la temperature à barcelone",
+      "metadata": {
+        "timestamp": "2024-11-29T20:55:01.802Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La température à Barcelone est actuellement de 14 degrés Celsius. Le ciel est nuageux, l'humidité est de 84% et le vent souffle à 7 km/h.\n",
+      "metadata": {
+        "timestamp": "2024-11-29T20:55:04.725Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Et à Paris",
+      "metadata": {
+        "timestamp": "2024-11-29T20:55:33.225Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Il fait 4 degrés Celsius à Paris avec un ciel dégagé. L'humidité est de 87% et le vent souffle à 11 km/h.\n",
+      "metadata": {
+        "timestamp": "2024-11-29T20:55:36.064Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Et à Moroni ?",
+      "metadata": {
+        "timestamp": "2024-11-29T20:55:50.583Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Il fait 27 degrés Celsius à Moroni avec un ciel dégagé. L'humidité est de 82% et le vent souffle à 7 km/h.\n",
+      "metadata": {
+        "timestamp": "2024-11-29T20:55:53.422Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "et à Paris demain à 12h",
+      "metadata": {
+        "timestamp": "2024-11-29T20:56:05.274Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Demain à 12h, soit dans l'après-midi, il fera 4 degrés Celsius à Paris avec un ciel dégagé. L'humidité sera de 87% et le vent soufflera à 11 km/h.\n",
+      "metadata": {
+        "timestamp": "2024-11-29T21:05:48.295Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-29T21:05:48.295Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732913690608"
+  }
+}

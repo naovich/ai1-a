@@ -1,0 +1,83 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-29T21:14:09.831Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "fais une recherche et donne moi le prix de l'action TESLA",
+      "metadata": {
+        "timestamp": "2024-11-29T21:11:18.155Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "The current price of Tesla stock (TSLA) is $345.16, as of market close on November 29, 2024.\n\nSources:\nhttps://finance.yahoo.com/quote/TSLA/\nhttps://www.tesla.com/\nhttps://www.google.com/finance/quote/TSLA:NASDAQ?hl=en\nhttps://www.marketwatch.com/investing/stock/tsla\nhttps://www.cnbc.com/quotes/TSLA\n",
+      "metadata": {
+        "timestamp": "2024-11-29T21:12:34.065Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "fais une recherche et donne moi le prix du bitcoin",
+      "metadata": {
+        "timestamp": "2024-11-29T21:12:40.690Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "The current price of Bitcoin is $97,439.07, according to Binance.\n\nSources:\nhttps://www.binance.com/en/price/bitcoin\nhttps://coinmarketcap.com/currencies/bitcoin/\nhttps://www.coindesk.com/price/bitcoin\nhttps://www.coingecko.com/en/coins/bitcoin\nhttps://www.tradingview.com/symbols/BTCUSD/\n",
+      "metadata": {
+        "timestamp": "2024-11-29T21:13:00.865Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "résume cette article https://fr.news.yahoo.com/inondations-meurtri%C3%A8res-espagne-mois-apr%C3%A8s-205223939.html"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://fr.news.yahoo.com/inondations-meurtri%C3%A8res-espagne-mois-apr%C3%A8s-205223939.html"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2024-11-29T21:14:09.831Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Il y a un mois, des inondations dans le sud-est de l'Espagne ont fait 230 morts et causé d'énormes dégâts, le retour à la normale étant toujours attendu dans de nombreuses communes. Des rassemblements en hommage aux victimes sont organisés dans la région de Valence, la plus touchée avec 222 victimes. La colère persiste quant au retard des alertes sur les portables, lancées plus de douze heures après l'alerte météo initiale, et à la gestion des secours. Le gouvernement a promis une aide de 16,6 milliards d'euros, et des équipes de nettoyage et de reconstruction sont déployées, mais les critiques envers les responsables politiques persistent. Une nouvelle manifestation est prévue, après un précédent rassemblement de 130 000 personnes réclamant la démission du président régional.\n",
+      "metadata": {
+        "timestamp": "2024-11-29T21:14:26.584Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-29T21:14:26.584Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732914661670"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-29T20:39:55.756Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle heure est-il",
+      "metadata": {
+        "timestamp": "2024-11-29T19:40:03.399Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "metadata": {
+        "timestamp": "2024-11-29T19:40:05.659Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quelle est la temperature a paris",
+      "metadata": {
+        "timestamp": "2024-11-29T19:40:24.655Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Désolé, une erreur est survenue lors du traitement de votre demande.",
+      "metadata": {
+        "timestamp": "2024-11-29T20:39:56.629Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-29T20:39:56.629Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1732909195890"
+  }
+}

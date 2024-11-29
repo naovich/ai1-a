@@ -1,32 +1,70 @@
-import {
-  GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
-} from '@google/generative-ai';
-import { AIService, AIProvider, AIResponse } from './ai.interface';
-import fetch from 'node-fetch';
-import { Buffer } from 'buffer';
+import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
+import { AIService, AIProvider, AIResponse, AITool } from './ai.interface';
+import { AIToolManager } from './skills/AIToolManager';
+import { defaultTools } from './skills';
 
 type ModelProps = 'gemini-pro' | 'gemini-1.5-flash' | 'gemini-1.5-pro';
 
-export class GeminiService implements AIService {
+export class GeminiService extends AIToolManager implements AIService {
   private genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
   private defaultModel: ModelProps = 'gemini-1.5-pro';
   private MAX_TOKENS = 4096;
 
+  constructor() {
+    super();
+    defaultTools.forEach((tool) => this.registerTool(tool));
+  }
+
+  private convertToolToGeminiFormat(tool: AITool) {
+    const schema = tool.getSchema().function;
+    return {
+      name: schema.name,
+      description: schema.description,
+      parameters: {
+        type: SchemaType.OBJECT,
+        properties: Object.entries(schema.parameters.properties).reduce(
+          (acc, [key, prop]: [string, any]) => ({
+            ...acc,
+            [key]: {
+              type: this.convertToGeminiType(prop.type),
+              description: prop.description,
+              ...(prop.enum ? { enum: prop.enum } : {}),
+            },
+          }),
+          {},
+        ),
+        required: schema.parameters.required,
+      },
+    };
+  }
+
+  private convertToGeminiType(type: string): SchemaType {
+    const typeMap: Record<string, SchemaType> = {
+      string: SchemaType.STRING,
+      integer: SchemaType.INTEGER,
+      boolean: SchemaType.BOOLEAN,
+      object: SchemaType.OBJECT,
+    };
+    return typeMap[type.toLowerCase()] || SchemaType.STRING;
+  }
+
   async getAnswer(
     prompt: string,
-    model: ModelProps = this.defaultModel,
+    model: string = this.defaultModel,
   ): Promise<AIResponse> {
     try {
-      let formattedMessages: any[];
-      try {
-        formattedMessages = JSON.parse(prompt);
-      } catch (error) {
-        formattedMessages = [{ role: 'user', content: prompt }];
-      }
+      const generativeModel = this.genAI.getGenerativeModel({
+        model,
+        tools: [
+          {
+            functionDeclarations: this.getTools().map((tool) =>
+              this.convertToolToGeminiFormat(tool),
+            ),
+          },
+        ],
+      });
 
-      const geminiModel = this.genAI.getGenerativeModel({ model: model });
+      const formattedMessages: any[] = JSON.parse(prompt);
 
       const formattedAllMessages = await Promise.all(
         formattedMessages.map(async (msg) => ({
@@ -38,38 +76,44 @@ export class GeminiService implements AIService {
       const history = formattedAllMessages.slice(0, -1).filter(Boolean);
       const formattedLastMessage = formattedAllMessages.at(-1)?.parts;
 
-      const chat = geminiModel.startChat({
+      const chat = generativeModel.startChat({
         history: history,
         generationConfig: {
           maxOutputTokens: this.MAX_TOKENS,
         },
-        safetySettings: [
-          {
-            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-          },
-          {
-            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-          },
-          {
-            category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-          },
-          {
-            category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold: HarmBlockThreshold.BLOCK_NONE,
-          },
-        ],
       });
 
-      try {
-        const result = await chat.sendMessage(formattedLastMessage);
-        const response = await result.response;
+      const result = await chat.sendMessage(formattedLastMessage);
+      const response = await result.response;
+
+      const functionCalls = response.functionCalls();
+      if (functionCalls && functionCalls.length > 0) {
+        const toolResults = await Promise.all(
+          functionCalls.map(async (call) => {
+            const result = await this.executeTool(call.name, call.args);
+            return {
+              tool_call_id: call.name,
+              content: JSON.stringify(result),
+              tool_name: call.name,
+            };
+          }),
+        );
+
+        const finalResponse = await chat.sendMessage([
+          {
+            text: JSON.stringify(
+              toolResults.map((r) => ({
+                type: 'tool_result',
+                tool_use_id: r.tool_call_id,
+                content: r.content,
+              })),
+            ),
+          },
+        ]);
 
         return {
           role: 'assistant',
-          content: response.text(),
+          content: finalResponse.response.text(),
           provider: 'gemini' as AIProvider,
           metadata: {
             timestamp: new Date().toISOString(),
@@ -77,10 +121,18 @@ export class GeminiService implements AIService {
             status: 'success',
           },
         };
-      } catch (error) {
-        console.error('Error during chat.sendMessage:', error);
-        throw error;
       }
+
+      return {
+        role: 'assistant',
+        content: response.text(),
+        provider: 'gemini' as AIProvider,
+        metadata: {
+          timestamp: new Date().toISOString(),
+          model: model,
+          status: 'success',
+        },
+      };
     } catch (error) {
       console.error('Gemini error:', error);
       return {
@@ -145,4 +197,16 @@ export class GeminiService implements AIService {
 
     return [{ text: content }];
   }
+
+  /* private async executeSearch(args: any): Promise<any> {
+    const searchResponse = await this.searchTool.execute(args);
+
+    // Limiter la taille du contenu pour chaque résultat
+    const MAX_CONTENT_LENGTH = 8000;
+    return searchResponse.map((result: any) => ({
+      ...result,
+      content: result.content?.slice(0, MAX_CONTENT_LENGTH),
+      snippet: result.snippet?.slice(0, 500),
+    }));
+  }*/
 }
