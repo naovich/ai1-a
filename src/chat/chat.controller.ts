@@ -30,6 +30,7 @@ export class ChatController {
       chatId,
       systemProfileId,
       refresh,
+      searchOn,
     }: {
       prompt: string;
       provider?: string;
@@ -37,6 +38,7 @@ export class ChatController {
       chatId: string;
       systemProfileId?: string;
       refresh?: boolean;
+      searchOn?: boolean;
     },
   ): Promise<object> {
     return this.chatService.getAnswer({
@@ -46,6 +48,7 @@ export class ChatController {
       chatId,
       systemProfileId,
       refresh,
+      searchOn,
     });
   }
 

@@ -39,6 +39,7 @@ export class AnthropicService extends AIToolManager implements AIService {
   async getAnswer(
     prompt: string,
     model: string = this.defaultModel,
+    searchOn: boolean = true,
   ): Promise<AIResponse> {
     let messages;
     try {
@@ -64,16 +65,18 @@ export class AnthropicService extends AIToolManager implements AIService {
         temperature: this.TEMPERATURE,
         system: systemMessage,
         messages: history,
-        tools: this.getTools().map((tool) => ({
-          name: tool.getSchema().function.name,
-          description: tool.getSchema().function.description,
-          input_schema: {
-            type: 'object',
-            properties: tool.getSchema().function.parameters.properties,
-            required: tool.getSchema().function.parameters.required,
-          },
-        })),
-        tool_choice: { type: 'auto' },
+        ...(searchOn && {
+          tools: this.getTools().map((tool) => ({
+            name: tool.getSchema().function.name,
+            description: tool.getSchema().function.description,
+            input_schema: {
+              type: 'object',
+              properties: tool.getSchema().function.parameters.properties,
+              required: tool.getSchema().function.parameters.required,
+            },
+          })),
+          tool_choice: { type: 'auto' },
+        }),
       });
 
       if (response.content.some((item) => item.type === 'tool_use')) {
@@ -108,10 +111,12 @@ export class AnthropicService extends AIToolManager implements AIService {
               })),
             },
           ],
-          tools: this.getTools().map((tool) =>
-            this.convertToolToAnthropicFormat(tool),
-          ),
-          tool_choice: { type: 'auto' },
+          ...(searchOn && {
+            tools: this.getTools().map((tool) =>
+              this.convertToolToAnthropicFormat(tool),
+            ),
+            tool_choice: { type: 'auto' },
+          }),
         });
 
         return {

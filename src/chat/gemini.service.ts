@@ -1,7 +1,8 @@
 import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
+//import { FunctionCallingMode } from '@google/generative-ai';
 import { AIService, AIProvider, AIResponse, AITool } from './ai.interface';
 import { AIToolManager } from './skills/AIToolManager';
-import { defaultTools } from './skills';
+import { defaultTools, SearchTool } from './skills';
 
 type ModelProps = 'gemini-pro' | 'gemini-1.5-flash' | 'gemini-1.5-pro';
 
@@ -51,17 +52,26 @@ export class GeminiService extends AIToolManager implements AIService {
   async getAnswer(
     prompt: string,
     model: string = this.defaultModel,
+    searchOn: boolean = true,
   ): Promise<AIResponse> {
     try {
       const generativeModel = this.genAI.getGenerativeModel({
         model,
         tools: [
           {
-            functionDeclarations: this.getTools().map((tool) =>
-              this.convertToolToGeminiFormat(tool),
-            ),
+            functionDeclarations: this.getTools()
+              .filter((tool) => searchOn || !(tool instanceof SearchTool))
+              .map((tool) => this.convertToolToGeminiFormat(tool)),
           },
         ],
+        /*toolConfig: {
+          functionCallingConfig: {
+            mode: FunctionCallingMode.ANY,
+            allowedFunctionNames: this.getTools().map(
+              (tool) => tool.getSchema().function.name,
+            ),
+          },
+        },*/
       });
 
       const formattedMessages: any[] = JSON.parse(prompt);
@@ -197,16 +207,4 @@ export class GeminiService extends AIToolManager implements AIService {
 
     return [{ text: content }];
   }
-
-  /* private async executeSearch(args: any): Promise<any> {
-    const searchResponse = await this.searchTool.execute(args);
-
-    // Limiter la taille du contenu pour chaque résultat
-    const MAX_CONTENT_LENGTH = 8000;
-    return searchResponse.map((result: any) => ({
-      ...result,
-      content: result.content?.slice(0, MAX_CONTENT_LENGTH),
-      snippet: result.snippet?.slice(0, 500),
-    }));
-  }*/
 }
