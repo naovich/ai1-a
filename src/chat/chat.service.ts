@@ -13,6 +13,7 @@ export interface ChatResponseProps {
   chatId: string;
   systemProfileId?: string;
   refresh?: boolean;
+  searchOn?: boolean;
 }
 
 interface MessageMetadata {
@@ -186,6 +187,7 @@ export class ChatService {
     chatId,
     systemProfileId,
     refresh,
+    searchOn,
   }: ChatResponseProps): Promise<object> {
     this.chatName = chatId;
     const history = await this.getChatHistory(chatId);
@@ -281,7 +283,11 @@ export class ChatService {
       })),
     );
 
-    const message = await service.getAnswer(messagesForProvider, model);
+    const message = await service.getAnswer(
+      messagesForProvider,
+      model,
+      searchOn,
+    );
 
     this.responses.push({
       role: 'assistant',

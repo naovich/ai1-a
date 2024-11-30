@@ -21,6 +21,7 @@ export class OpenAIService extends AIToolManager implements AIService {
   async getAnswer(
     prompt: string,
     model: ModelProps = this.defaultModel,
+    searchOn: boolean = true,
   ): Promise<AIResponse> {
     try {
       const formattedMessages = [];
@@ -76,8 +77,10 @@ export class OpenAIService extends AIToolManager implements AIService {
         model: hasImages ? 'gpt-4o' : model,
         temperature: 0.7,
         max_completion_tokens: this.MAX_TOKENS,
-        tools: this.getToolSchemas(),
-        tool_choice: 'auto',
+        ...(searchOn && {
+          tools: this.getToolSchemas(),
+          tool_choice: 'auto',
+        }),
       });
 
       if (completion.choices[0].message.tool_calls) {

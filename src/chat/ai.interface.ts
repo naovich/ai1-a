@@ -35,8 +35,8 @@ export interface AITool {
 export interface AIService {
   getAnswer(
     prompt: string,
-    systemContent?: string,
     model?: string,
+    searchOn?: boolean,
   ): Promise<AIResponse>;
   generateSpeech?(text: string): Promise<Buffer>;
 }

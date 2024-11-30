@@ -18,4 +18,8 @@ export abstract class AIToolManager {
   protected getToolSchemas(): any[] {
     return Array.from(this.tools.values()).map((tool) => tool.getSchema());
   }
+
+  protected getTools(): AITool[] {
+    return Array.from(this.tools.values());
+  }
 }
