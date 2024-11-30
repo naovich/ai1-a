@@ -1,6 +1,25 @@
 {
-  "messages": [],
-  "lastUpdated": "2024-11-30T00:53:02.958Z",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-11-30T01:01:11.975Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "What can I assist you with today?",
+      "metadata": {
+        "timestamp": "2024-11-30T01:01:12.498Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-11-30T01:01:12.499Z",
   "chatInfo": {
     "user": "admin",
     "chatName": "chat_1732927982956"
