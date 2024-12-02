@@ -4,24 +4,33 @@
       "role": "system",
       "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-11-30T01:01:11.975Z",
+        "timestamp": "2024-12-02T16:13:23.845Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     },
     {
-      "role": "assistant",
-      "content": "What can I assist you with today?",
+      "role": "user",
+      "content": "quelle est la capitale de la France",
       "metadata": {
-        "timestamp": "2024-11-30T01:01:12.498Z",
+        "timestamp": "2024-12-02T16:13:12.899Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La capitale de la France est Paris.",
+      "metadata": {
+        "timestamp": "2024-12-02T16:13:24.494Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     }
   ],
-  "lastUpdated": "2024-11-30T01:01:12.499Z",
+  "lastUpdated": "2024-12-02T16:13:24.494Z",
   "chatInfo": {
     "user": "admin",
-    "chatName": "chat_1732927982956"
+    "chatName": "chat_1733155979262"
   }
 }
