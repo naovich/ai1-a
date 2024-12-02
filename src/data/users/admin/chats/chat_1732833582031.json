@@ -4,7 +4,7 @@
       "role": "system",
       "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-11-28T22:40:44.601Z",
+        "timestamp": "2024-12-02T16:28:49.991Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
@@ -66,9 +66,27 @@
         "provider": "openai",
         "model": "gpt-4o"
       }
+    },
+    {
+      "role": "user",
+      "content": "La personne porte-t-elle des manches longues ?",
+      "metadata": {
+        "timestamp": "2024-12-02T16:28:49.991Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Non, la personne ne porte pas de manches longues. Les bras sont découverts.",
+      "metadata": {
+        "timestamp": "2024-12-02T16:28:53.721Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
     }
   ],
-  "lastUpdated": "2024-11-28T22:40:48.585Z",
+  "lastUpdated": "2024-12-02T16:28:53.721Z",
   "chatInfo": {
     "user": "admin",
     "chatName": "chat_1732833582031"

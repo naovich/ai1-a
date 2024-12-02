@@ -4,7 +4,7 @@
       "role": "system",
       "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-12-02T16:13:23.845Z",
+        "timestamp": "2024-12-02T16:35:31.158Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
@@ -26,9 +26,81 @@
         "provider": "openai",
         "model": "gpt-4o"
       }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est la capitale de l'Italie ?",
+      "metadata": {
+        "timestamp": "2024-12-02T16:28:26.293Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La capitale de l'Italie est Rome.",
+      "metadata": {
+        "timestamp": "2024-12-02T16:28:27.080Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est la capitale de la Mongolie ?",
+      "metadata": {
+        "timestamp": "2024-12-02T16:34:56.828Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La capitale de la Mongolie est Oulan-Bator.",
+      "metadata": {
+        "timestamp": "2024-12-02T16:34:57.408Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Télé la capitale du Sri Lanka",
+      "metadata": {
+        "timestamp": "2024-12-02T16:35:09.547Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La capitale du Sri Lanka est Sri Jayawardenapura Kotte. Cependant, Colombo est souvent considérée comme la capitale commerciale et est la plus grande ville du pays.",
+      "metadata": {
+        "timestamp": "2024-12-02T16:35:10.572Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Combien y a-t-il d'habitants, Colombo?",
+      "metadata": {
+        "timestamp": "2024-12-02T16:35:31.158Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La population de Colombo, la plus grande ville du Sri Lanka, est d'environ 750,000 habitants dans la ville proprement dite. Cependant, la région métropolitaine de Colombo compte une population beaucoup plus importante, dépassant 5 millions d'habitants. Ces chiffres peuvent varier en fonction des sources et des estimations récentes.",
+      "metadata": {
+        "timestamp": "2024-12-02T16:35:32.538Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
     }
   ],
-  "lastUpdated": "2024-12-02T16:13:24.494Z",
+  "lastUpdated": "2024-12-02T16:35:32.538Z",
   "chatInfo": {
     "user": "admin",
     "chatName": "chat_1733155979262"

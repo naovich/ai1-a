@@ -42,6 +42,20 @@ export class TtsService {
 
   async transcribeAudio(filePath: string): Promise<string> {
     try {
+      // Vérifier que le fichier existe et est un fichier audio valide
+      const stats = await fs.stat(filePath);
+      if (!stats.isFile()) {
+        throw new Error("Le chemin spécifié n'est pas un fichier.");
+      }
+
+      const validExtensions = ['.mp3', '.wav', '.flac', '.webm'];
+      const fileExtension = path.extname(filePath).toLowerCase();
+      if (!validExtensions.includes(fileExtension)) {
+        throw new Error(
+          'Format de fichier non supporté. Formats supportés: .mp3, .wav, .flac, .webm',
+        );
+      }
+
       const transcription = await openai.audio.transcriptions.create({
         file: createReadStream(filePath),
         model: 'whisper-1',
