@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-12-03T18:58:34.340Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    },
+    {
+      "role": "user",
+      "content": "donne moi le code d'un composant react typescript",
+      "metadata": {
+        "timestamp": "2024-12-03T18:58:12.022Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Basé sur les résultats de la recherche, je vais vous fournir un exemple de composant React TypeScript clair et bien structuré :\n\n```typescript\n// Interface pour définir les props du composant\ninterface TitleProps {\n  title: string;           // prop requise \n  subtitle?: string;       // prop optionnelle avec ?\n  onClick?: () => void;    // fonction optionnelle\n}\n\n// Composant fonctionnel avec typage des props\nconst Title: React.FC<TitleProps> = ({ \n  title,\n  subtitle = \"Sous-titre par défaut\", // Valeur par défaut pour prop optionnelle\n  onClick \n}) => {\n  return (\n    <div className=\"title-container\">\n      <h1 onClick={onClick}>{title}</h1>\n      {subtitle && <h2>{subtitle}</h2>}\n    </div>\n  );\n};\n\nexport default Title;\n```\n\nExplications des éléments clés :\n\n1. Interface TitleProps :\n- Définit le type des props que le composant accepte\n- Utilise ? pour marquer les props optionnelles\n- Peut inclure des types primitifs, objets, fonctions, etc.\n\n2. Déclaration du composant :\n- Utilise React.FC (Function Component) avec le type générique des props\n- La destructuration des props est typée automatiquement\n- Des valeurs par défaut peuvent être définies pour les props optionnelles\n\n3. Utilisation du composant :\n```typescript\n// Exemple d'utilisation\n<Title \n  title=\"Mon titre\"\n  subtitle=\"Mon sous-titre\" \n  onClick={() => console.log('click')}\n/>\n```\n\nLes avantages de cette approche :\n\n- Typage strict des props pour éviter les erreurs\n- Autocomplétion dans l'IDE\n- Documentation implicite du composant\n- Réutilisabilité facilitée\n- Maintenance plus simple\n\nC'est une structure de base que vous pouvez adapter selon vos besoins. Vous pouvez ajouter :\n\n- Des états avec useState<T>\n- Des refs avec useRef<T>\n- Des types plus complexes\n- Des event handlers typés\n- etc.",
+      "metadata": {
+        "timestamp": "2024-12-03T18:58:49.774Z",
+        "provider": "anthropic",
+        "model": "claude-3-5-sonnet-20241022"
+      }
+    }
+  ],
+  "lastUpdated": "2024-12-03T18:58:49.774Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1733252275051"
+  }
+}

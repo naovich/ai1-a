@@ -2,6 +2,7 @@ import { AITool } from '../ai.interface';
 import { customsearch_v1 } from '@googleapis/customsearch';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { cleanQuery } from 'src/utils';
 import { URL } from 'url';
 
 interface SearchResponse {
@@ -24,31 +25,18 @@ export class SearchTool implements AITool {
       const response = await axios.get(url);
       const $ = cheerio.load(response.data);
 
-      $('script, style').remove();
+      // Supprimer tous les éléments et attributs liés au style
+      $('script, style, link[rel="stylesheet"]').remove();
+      $('[style]').removeAttr('style');
+      $('*').removeAttr('class');
+      $('*').removeAttr('id');
 
-      let content = $.text().replace(/\s+/g, ' ').trim();
-
-      const MAX_CONTENT_LENGTH = 16000;
-      if (content.length > MAX_CONTENT_LENGTH) {
-        content = content.slice(0, MAX_CONTENT_LENGTH) + '...';
-        console.log(`📄 Contenu tronqué à ${MAX_CONTENT_LENGTH} caractères`);
-      }
-
-      return content;
+      // Nettoyer le texte
+      return $('body').text().replace(/\s+/g, ' ').trim();
     } catch (error) {
-      console.warn(`Impossible de récupérer le contenu de ${url}`);
+      console.error(`Error fetching content from ${url}:`, error);
       return '';
     }
-  }
-
-  private cleanQuery(query: string): string {
-    if (!query) return '';
-
-    return query
-      .replace(/\b2023\b/g, '')
-      .replace(/\b(october|octobre)\b/gi, '')
-      .replace(/\s+/g, ' ')
-      .trim();
   }
 
   async execute(params: {
@@ -63,7 +51,7 @@ export class SearchTool implements AITool {
         return [];
       }
 
-      const cleanedQuery = this.cleanQuery(params.query);
+      const cleanedQuery = cleanQuery(params.query);
       console.log(`📝 Requête de recherche: "${cleanedQuery}"`);
       console.log(`🔍 Nombre de résultats demandés: ${params.numResults}`);
       console.log(`🌍 Pays de recherche: ${params.country || 'us'}`);

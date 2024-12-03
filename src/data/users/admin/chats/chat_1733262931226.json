@@ -1,0 +1,72 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-12-03T22:31:01.237Z",
+        "provider": "perplexity",
+        "model": "llama-3.1-sonar-huge-128k-online"
+      }
+    },
+    {
+      "role": "user",
+      "content": "fais un classement des cyptomonnaie par capitalisation et donne leur variation sur une journée",
+      "metadata": {
+        "timestamp": "2024-12-03T22:24:06.815Z",
+        "provider": "perplexity",
+        "model": "llama-3.1-sonar-huge-128k-online"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "**Classement des Cryptomonnaies par Capitalisation et Variation sur une Journée**\n\n1. **Bitcoin (BTC)**\n   - Prix : €93,102.17\n   - Variation 24h : 3.12%\n   - Capitalisation : €1.84T[1]\n\n2. **Ethereum (ETH)**\n   - Prix : €3,421.39\n   - Variation 24h : 1.45%\n   - Capitalisation : €412.48B[1]\n\n3. **Tether (USDT)**\n   - Prix : €0.9486\n   - Variation 24h : 0.07%\n   - Capitalisation : €126.58B[1]\n\n4. **Solana (SOL)**\n   - Prix : €231.52\n   - Variation 24h : 4.07%\n   - Capitalisation : €109.95B[1]\n\n5. **XRP (XRP)**\n   - Prix : €1.63\n   - Variation 24h : 18.93%\n   - Capitalisation : €92.99B[1]\n\n6. **BNB (BNB)**\n   - Prix : €625.85\n   - Variation 24h : 1.90%\n   - Capitalisation : €90.15B[1]\n\n7. **Dogecoin (DOGE)**\n   - Prix : €0.3981\n   - Variation 24h : 6.03%\n   - Capitalisation : €58.52B[1]\n\n8. **USDC (USDC)**\n   - Prix : €0.9476\n   - Variation 24h : 0.04%\n   - Capitalisation : €37.35B[1]\n\n9. **Cardano (ADA)**\n   - Prix : €1.02\n   - Variation 24h : 8.81%\n   - Capitalisation : €35.7B[1]\n\n10. **Avalanche (AVAX)**\n    - Prix : €42.09\n    - Variation 24h : 5.73%\n    - Capitalisation : €17.23B[1]\n\n**Remarque :** Les données sont basées sur les informations disponibles sur CoinMarketCap[1] et sont sujettes à des variations en fonction des mises à jour en temps réel.",
+      "metadata": {
+        "timestamp": "2024-12-03T22:24:31.391Z",
+        "provider": "perplexity",
+        "model": "llama-3.1-sonar-huge-128k-online"
+      }
+    },
+    {
+      "role": "user",
+      "content": "donne le moi en dollars",
+      "metadata": {
+        "timestamp": "2024-12-03T22:27:40.400Z",
+        "provider": "perplexity",
+        "model": "llama-3.1-sonar-huge-128k-online"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Voici les prix actuels des cryptomonnaies en dollars américains (USD) basés sur les informations disponibles dans les sources fournies :\n\n1. **Bitcoin (BTC)**\n   - Prix : $95,330.11[4]\n   - Variation 24h : 1.1%[4]\n   - Capitalisation : $1.886T[4]\n\n2. **Ethereum (ETH)**\n   - Prix : $3,563.10[4]\n   - Variation 24h : 2.0%[4]\n   - Capitalisation : $429.147B[4]\n\n3. **Tether (USDT)**\n   - Prix : $0.9992[5]\n   - Variation 24h : -0.08%[5]\n   - Capitalisation : $96.03B[5]\n\n4. **XRP (XRP)**\n   - Prix : $2.30[5]\n   - Variation 24h : +20.06%[5]\n   - Capitalisation : $28.59B[5]\n\n5. **Solana (SOL)**\n   - Prix : $97.39[5]\n   - Variation 24h : -0.96%[5]\n   - Capitalisation : $42.21B[5]\n\n6. **BNB (BNB)**\n   - Prix : $308.05[5]\n   - Variation 24h : +0.28%[5]\n   - Capitalisation : $46.07B[5]\n\n7. **Dogecoin (DOGE)**\n   - Prix : $0.4065[4]\n   - Variation 24h : 3.8%[4]\n   - Capitalisation : $59.733B[4]\n\n8. **USDC (USDC)**\n   - Prix : $0.9988[4]\n   - Variation 24h : 0.0%[4]\n   - Capitalisation : $39.797B[4]\n\n9. **Cardano (ADA)**\n   - Prix : $1.20[4]\n   - Variation 24h : 0.1%[4]\n   - Capitalisation : $42.940B[4]\n\n10. **Avalanche (AVAX)**\n    - Prix : $49.91[4]\n    - Variation 24h : 3.2%[4]\n    - Capitalisation : $20.427B[4]\n\n**Remarque :** Les données sont basées sur les informations disponibles sur CoinGecko[4] et Crypto.com[5], et sont sujettes à des variations en fonction des mises à jour en temps réel.\nundefined",
+      "metadata": {
+        "timestamp": "2024-12-03T22:28:08.281Z",
+        "provider": "perplexity",
+        "model": "llama-3.1-sonar-huge-128k-online"
+      }
+    },
+    {
+      "role": "user",
+      "content": "donne moi un classement des principale capitalisation boursière mondiale",
+      "metadata": {
+        "timestamp": "2024-12-03T22:31:01.237Z",
+        "provider": "perplexity",
+        "model": "llama-3.1-sonar-huge-128k-online"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Voici un classement des principales capitalisations boursières mondiales basé sur les informations disponibles dans les sources fournies :\n\n1. **Microsoft** - 3,064 milliards de dollars[5]\n2. **Amazon** - 2,830 milliards de dollars[5]\n3. **Nvidia** - 3,335 milliards de dollars (pic atteint le 19 juin 2024)[4]\n4. **Apple** - 3,286 milliards de dollars[4]\n5. **Alphabet** - 1,866 milliards de dollars[1]\n6. **Aramco** - 1,738 milliards de dollars[1]\n7. **Meta** - 1,295 milliards de dollars[1]\n8. **Berkshire Hathaway** - 976,67 milliards de dollars[1]\n9. **Eli Lilly and Company** - 875,24 milliards de dollars[1]\n10. **XCHG** - 835,26 milliards de dollars[1]\n\n**Remarque :** Les données peuvent varier en fonction des mises à jour en temps réel et des sources utilisées. Les chiffres ci-dessus sont basés sur les informations disponibles dans les sources fournies et peuvent ne pas refléter les valeurs actuelles.\nundefined",
+      "metadata": {
+        "timestamp": "2024-12-03T22:31:15.435Z",
+        "provider": "perplexity",
+        "model": "llama-3.1-sonar-huge-128k-online"
+      }
+    }
+  ],
+  "lastUpdated": "2024-12-03T22:31:15.435Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1733262931226"
+  }
+}

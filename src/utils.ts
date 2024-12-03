@@ -24,3 +24,13 @@ export const isImageUrl = (url: string): boolean => {
   // Pour les autres URLs, vérifie si elles contiennent des indicateurs d'images
   return /\/(image|img|photo|picture)\/?/i.test(url);
 };
+
+export const cleanQuery = (query: string): string => {
+  if (!query) return '';
+
+  return query
+    .replace(/\b2023\b/g, '')
+    .replace(/\b(october|octobre)\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+};

@@ -4,69 +4,69 @@
       "role": "system",
       "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-11-26T00:06:00.173Z",
+        "timestamp": "2024-12-03T22:46:33.461Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     },
     {
       "role": "user",
-      "content": "donne moi la météo d'après demain à midi",
+      "content": "quel est la capital du malawi",
       "metadata": {
-        "timestamp": "2024-11-26T00:04:09.234Z",
+        "timestamp": "2024-12-03T22:44:22.326Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     },
     {
       "role": "assistant",
-      "content": "La météo prévue pour après-demain à midi indique qu'il fera environ 8°C avec un temps partiellement nuageux. L'humidité sera de 59% et le vent soufflera à 6 km/h.",
+      "content": "La capitale du Malawi est Lilongwe.",
       "metadata": {
-        "timestamp": "2024-11-26T00:04:11.617Z",
+        "timestamp": "2024-12-03T22:44:23.321Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     },
     {
       "role": "user",
-      "content": "quel jour seront nous après demain ?",
+      "content": "Combien il y a d'habitants ?",
       "metadata": {
-        "timestamp": "2024-11-26T00:04:36.022Z",
+        "timestamp": "2024-12-03T22:44:40.314Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     },
     {
       "role": "assistant",
-      "content": "Aujourd'hui, nous sommes le 26 novembre 2024. Après-demain sera donc le 28 novembre 2024.",
+      "content": "En 2023, la population du Malawi est estimée à environ 21 817 942 habitants.",
       "metadata": {
-        "timestamp": "2024-11-26T00:04:37.582Z",
+        "timestamp": "2024-12-03T22:44:44.310Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     },
     {
       "role": "user",
-      "content": "et demain à 5h du matin ?",
+      "content": "quels sont les pays frontaliers",
       "metadata": {
-        "timestamp": "2024-11-26T00:06:00.173Z",
+        "timestamp": "2024-12-03T22:46:33.461Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     },
     {
       "role": "assistant",
-      "content": "Désolé, une erreur est survenue.",
+      "content": "Le Malawi partage ses frontières avec trois pays :\n\n1. La Tanzanie au nord-est.\n2. Le Mozambique au sud, sud-ouest et sud-est.\n3. La Zambie à l'ouest.",
       "metadata": {
-        "timestamp": "2024-11-26T00:06:01.511Z",
+        "timestamp": "2024-12-03T22:46:34.627Z",
         "provider": "openai",
         "model": "gpt-4o"
       }
     }
   ],
-  "lastUpdated": "2024-11-26T00:06:01.511Z",
+  "lastUpdated": "2024-12-03T22:46:34.628Z",
   "chatInfo": {
     "user": "admin",
-    "chatName": "chat_1732579428120"
+    "chatName": "chat_1733265425826"
   }
 }
