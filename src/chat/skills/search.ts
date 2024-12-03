@@ -2,6 +2,7 @@ import { AITool } from '../ai.interface';
 import { customsearch_v1 } from '@googleapis/customsearch';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { cleanQuery } from 'src/utils';
 import { URL } from 'url';
 
 interface SearchResponse {
@@ -38,16 +39,6 @@ export class SearchTool implements AITool {
     }
   }
 
-  private cleanQuery(query: string): string {
-    if (!query) return '';
-
-    return query
-      .replace(/\b2023\b/g, '')
-      .replace(/\b(october|octobre)\b/gi, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-  }
-
   async execute(params: {
     query: string;
     numResults: number;
@@ -60,7 +51,7 @@ export class SearchTool implements AITool {
         return [];
       }
 
-      const cleanedQuery = this.cleanQuery(params.query);
+      const cleanedQuery = cleanQuery(params.query);
       console.log(`📝 Requête de recherche: "${cleanedQuery}"`);
       console.log(`🔍 Nombre de résultats demandés: ${params.numResults}`);
       console.log(`🌍 Pays de recherche: ${params.country || 'us'}`);

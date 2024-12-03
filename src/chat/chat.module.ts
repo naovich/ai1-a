@@ -4,6 +4,7 @@ import { ChatService } from './chat.service';
 import { OpenAIService } from './openai.service';
 import { AnthropicService } from './anthropic.service';
 import { GeminiService } from './gemini.service';
+import { PerplexityService } from './perplexity.service';
 
 @Module({
   controllers: [ChatController],
@@ -17,6 +18,7 @@ import { GeminiService } from './gemini.service';
           anthropic: new AnthropicService(),
           openai: new OpenAIService(),
           gemini: new GeminiService(),
+          perplexity: new PerplexityService(),
           defaultProvider,
         };
       },

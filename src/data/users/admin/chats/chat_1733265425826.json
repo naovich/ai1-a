@@ -1,0 +1,72 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-12-03T22:46:33.461Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quel est la capital du malawi",
+      "metadata": {
+        "timestamp": "2024-12-03T22:44:22.326Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La capitale du Malawi est Lilongwe.",
+      "metadata": {
+        "timestamp": "2024-12-03T22:44:23.321Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Combien il y a d'habitants ?",
+      "metadata": {
+        "timestamp": "2024-12-03T22:44:40.314Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "En 2023, la population du Malawi est estimée à environ 21 817 942 habitants.",
+      "metadata": {
+        "timestamp": "2024-12-03T22:44:44.310Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quels sont les pays frontaliers",
+      "metadata": {
+        "timestamp": "2024-12-03T22:46:33.461Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Le Malawi partage ses frontières avec trois pays :\n\n1. La Tanzanie au nord-est.\n2. Le Mozambique au sud, sud-ouest et sud-est.\n3. La Zambie à l'ouest.",
+      "metadata": {
+        "timestamp": "2024-12-03T22:46:34.627Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-12-03T22:46:34.628Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1733265425826"
+  }
+}

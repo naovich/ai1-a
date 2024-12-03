@@ -1,4 +1,4 @@
-export type AIProvider = 'openai' | 'anthropic' | 'gemini';
+export type AIProvider = 'openai' | 'anthropic' | 'gemini' | 'perplexity';
 
 export interface MessageMetadata {
   timestamp: string;

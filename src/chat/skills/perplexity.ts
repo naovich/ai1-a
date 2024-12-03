@@ -1,4 +1,5 @@
 // src/chat/skills/perplexity.ts
+import { cleanQuery } from 'src/utils';
 import { AITool } from '../ai.interface';
 import axios from 'axios';
 
@@ -17,7 +18,8 @@ export class PerplexityTool implements AITool {
     temperature?: number;
     max_tokens?: number;
   }) {
-    console.log('🔍 Requête de recherche:', args.query);
+    const cleanedQuery = cleanQuery(args.query);
+    console.log('🔍 Requête de recherche tools perplexity:', cleanedQuery);
 
     try {
       const response = await axios.post(
@@ -31,7 +33,7 @@ export class PerplexityTool implements AITool {
             },
             {
               role: 'user',
-              content: args.query,
+              content: cleanedQuery,
             },
           ],
 
@@ -49,11 +51,20 @@ export class PerplexityTool implements AITool {
           },
         },
       );
-      console.log(
-        '🔍 Réponse de Perplexity:',
-        response.data.choices[0].message.content,
+      console.log('🔍 Réponse de Perplexity tools OK');
+      return (
+        response.data.choices[0].message.content +
+        '\n\n' +
+        (response.data.citations
+          ? '**Sources:**\n' +
+            response.data.citations
+              .map(
+                (citation, index) =>
+                  `- \\[${index + 1}\\] [${new URL(citation).hostname}](${citation})`,
+              )
+              .join('\n')
+          : '')
       );
-      return response.data.choices[0].message.content;
     } catch (error) {
       console.error('Perplexity API error:', error);
       throw error;
@@ -66,7 +77,7 @@ export class PerplexityTool implements AITool {
       function: {
         name: this.name,
         description:
-          "Quand il faut faire une recherche sur internet, par exemple pour des données récente.Réponds d'abord précisément à la question posée en quelques phrase, ensuite tu donne les autres informations que tu as reçu relative à la question posée.",
+          "Quand il faut faire une recherche sur internet, par exemple pour des données récente.Réponds d'abord précisément à la question posée en quelques phrase, ensuite tu donne les autres informations que tu as reçu relative à la question posée. Affiche les sources en bas de la réponse.",
         parameters: {
           type: 'object',
           properties: {

@@ -27,4 +27,11 @@ export const systemProfile: SystemProfilPros[] = [
     avatar:
       'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',
   },
+  {
+    id: 'SR',
+    name: 'Search assistant',
+    content: 'You are a Search assistant. You search information on the web.',
+    avatar:
+      'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',
+  },
 ];
