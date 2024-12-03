@@ -9,7 +9,7 @@ export class TvService {
 
   constructor() {
     this.lgtv = lgtv2({
-      url: `ws://${process.env.TV_IP_ADDRESS_WIFI}:3000`,
+      url: `ws://${process.env.TV_IP_ADDRESS_ETHERNET}:3000`,
     });
 
     this.lgtv.on('connect', () => {
