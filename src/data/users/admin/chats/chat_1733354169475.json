@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-12-04T23:16:22.090Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "quel heure il est ?",
+      "metadata": {
+        "timestamp": "2024-12-04T23:16:22.090Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Il est 00h16 UTC. Si vous avez besoin de l'heure locale, pourriez-vous préciser votre fuseau horaire ?",
+      "metadata": {
+        "timestamp": "2024-12-04T23:16:23.975Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-12-04T23:16:23.975Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1733354169475"
+  }
+}

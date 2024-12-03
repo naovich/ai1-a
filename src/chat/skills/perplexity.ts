@@ -1,4 +1,3 @@
-// src/chat/skills/perplexity.ts
 import { cleanQuery } from 'src/utils';
 import { AITool } from '../ai.interface';
 import axios from 'axios';
