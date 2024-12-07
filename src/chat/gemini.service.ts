@@ -9,7 +9,7 @@ type ModelProps = 'gemini-pro' | 'gemini-1.5-flash' | 'gemini-1.5-pro';
 export class GeminiService extends AIToolManager implements AIService {
   private genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
   private defaultModel: ModelProps = 'gemini-1.5-pro';
-  private MAX_TOKENS = 4096;
+  private MAX_TOKENS = 10000;
 
   constructor() {
     super();
