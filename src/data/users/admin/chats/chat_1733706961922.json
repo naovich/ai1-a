@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2024-12-09T01:40:30.966Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Qui est le premier président des USA",
+      "metadata": {
+        "timestamp": "2024-12-09T01:16:24.078Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Le premier président des États-Unis est George Washington. Il a pris ses fonctions le 30 avril 1789 et a servi jusqu'au 4 mars 1797. Washington est souvent appelé le \"Père de son pays\" en raison de son rôle central dans la fondation des États-Unis et dans l'établissement des principes de la présidence.",
+      "metadata": {
+        "timestamp": "2024-12-09T01:40:32.178Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2024-12-09T01:40:32.179Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1733706961922"
+  }
+}

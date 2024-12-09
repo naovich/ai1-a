@@ -4,7 +4,7 @@
       "role": "system",
       "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
       "metadata": {
-        "timestamp": "2024-12-04T23:49:05.631Z",
+        "timestamp": "2024-12-07T09:32:32.712Z",
         "provider": "gemini",
         "model": "gemini-1.5-pro"
       }
@@ -152,9 +152,27 @@
         "provider": "gemini",
         "model": "gemini-1.5-pro"
       }
+    },
+    {
+      "role": "user",
+      "content": "Quelle est la date de parution du livre",
+      "metadata": {
+        "timestamp": "2024-12-07T09:32:15.908Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "L'édition originale du livre *50 clés pour comprendre les maths* de Tony Crilly a été publiée en 2014 au Royaume-Uni.  La version française, intitulée *Juste assez de Maths pour briller en société*, est parue chez Dunod en 2008.  Une nouvelle présentation de cette version française, reprenant le titre original traduit, a été publiée en 2017.\n",
+      "metadata": {
+        "timestamp": "2024-12-07T09:32:42.464Z",
+        "provider": "gemini",
+        "model": "gemini-1.5-pro"
+      }
     }
   ],
-  "lastUpdated": "2024-12-04T23:49:28.597Z",
+  "lastUpdated": "2024-12-07T09:32:42.464Z",
   "chatInfo": {
     "user": "admin",
     "chatName": "chat_1733354195340"
