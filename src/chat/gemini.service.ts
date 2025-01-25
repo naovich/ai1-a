@@ -4,11 +4,11 @@ import { AIService, AIProvider, AIResponse, AITool } from './ai.interface';
 import { AIToolManager } from './skills/AIToolManager';
 import { defaultTools, SearchTool } from './skills';
 
-type ModelProps = 'gemini-pro' | 'gemini-1.5-flash' | 'gemini-1.5-pro';
+type ModelProps = 'gemini-1.5-flash' | 'gemini-1.5-pro' | 'gemini-exp-1206';
 
 export class GeminiService extends AIToolManager implements AIService {
   private genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-  private defaultModel: ModelProps = 'gemini-1.5-pro';
+  private defaultModel: ModelProps = 'gemini-exp-1206';
   private MAX_TOKENS = 10000;
 
   constructor() {
@@ -64,14 +64,6 @@ export class GeminiService extends AIToolManager implements AIService {
               .map((tool) => this.convertToolToGeminiFormat(tool)),
           },
         ],
-        /*toolConfig: {
-          functionCallingConfig: {
-            mode: FunctionCallingMode.ANY,
-            allowedFunctionNames: this.getTools().map(
-              (tool) => tool.getSchema().function.name,
-            ),
-          },
-        },*/
       });
 
       const formattedMessages: any[] = JSON.parse(prompt);

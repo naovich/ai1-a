@@ -152,6 +152,7 @@ export class TtsService {
     text: string,
     speed: number,
   ): Promise<void> {
+    console.log('generateOpenAISpeech', text, speed);
     const mp3 = await openai.audio.speech.create({
       model: 'tts-1',
       voice: openapiVoices.name as
