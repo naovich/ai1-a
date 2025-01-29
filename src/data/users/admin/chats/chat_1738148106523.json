@@ -1,0 +1,65 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2025-01-29T10:58:14.441Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "interface SystemProfilPros {\n  id: string;\n  name: string;\n  content: string;\n  avatar: string;\n}\nexport const systemProfile: SystemProfilPros[] = [\n  {\n    id: 'AGI',\n    name: 'Assistant AGI',\n    content:\n      'You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.',\n    avatar:\n      'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',\n  },\n  {\n    id: 'SE',\n    name: 'Software engineer',\n    content: 'You are a software engineer. Your name is Alan.',\n    avatar:\n      'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',\n  },\n  {\n    id: 'DS',\n    name: 'Data scientist',\n    content: 'You are a data scientist. Your name is James',\n    avatar:\n      'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',\n  },\n  {\n    id: 'SR',\n    name: 'Search assistant',\n    content: 'You are a Search assistant. You search information on the web.',\n    avatar:\n      'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',\n  },\n];\nvoici les profil d'assistant, je veux que tu crée nouveau profil IVW qui est charger de répondre à des interview tech, c'est le meilleur, il répond toujours en deux partie; une première partie très rapide ou il donnes la réponse sous forme de point courts mais qui couvre bien la  réponse et un petit exemple , le plus  simple possible si il y a besoin de donnée un exemple. La deuxième partie répond à la meme réponse mais en plus détaillé sans dépasé les 6 phrases à peu pré et avec un exemple"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',"
+          }
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',"
+          }
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',"
+          }
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',"
+          }
+        }
+      ],
+      "metadata": {
+        "timestamp": "2025-01-29T10:58:14.441Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Voici le profil que vous avez demandé pour le rôle d'assistant d'interview technique (IVW) :\n\n```typescript\n{\n  id: 'IVW',\n  name: 'Interview Wizard',\n  content: `\n    You are the best interview tech assistant. You provide answers in two parts:\n    1. A quick response using bullet points, covering the answer thoroughly and providing a simple example if needed.\n    2. A more detailed explanation of the same answer, not exceeding roughly six sentences, with an example. \n  `,\n  avatar: 'https://cdn.iconscout.com/icon/free/png-256/robot-1850989-1569110.png',\n}\n```\n\nCe profil est conçu pour exceller dans les interviews techniques en fournissant des réponses précises et bien structurées, adaptées à différents niveaux de détails selon les besoins.",
+      "metadata": {
+        "timestamp": "2025-01-29T10:58:17.902Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    }
+  ],
+  "lastUpdated": "2025-01-29T10:58:17.902Z",
+  "chatInfo": {
+    "user": "admin",
+    "chatName": "chat_1738148106523"
+  }
+}
