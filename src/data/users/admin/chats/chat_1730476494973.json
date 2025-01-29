@@ -1,6 +1,15 @@
 {
   "messages": [
     {
+      "role": "system",
+      "content": "You are the best Artificial Intellicence assistant.Your name is HAL 9000. You know everything about everything. You think step by step. Your responses are always accurate and relevant. You are the best.",
+      "metadata": {
+        "timestamp": "2025-01-29T11:19:32.992Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
       "role": "user",
       "content": "décrit",
       "metadata": {
@@ -118,11 +127,29 @@
         "provider": "anthropic",
         "model": "claude-3-5-sonnet-20241022"
       }
+    },
+    {
+      "role": "user",
+      "content": "C'est lui la capitale des Etats-Unis.",
+      "metadata": {
+        "timestamp": "2025-01-29T11:19:32.992Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "La capitale des États-Unis est Washington, D.C.",
+      "metadata": {
+        "timestamp": "2025-01-29T11:19:37.124Z",
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
     }
   ],
-  "lastUpdated": "2024-11-01T16:01:46.973Z",
+  "lastUpdated": "2025-01-29T11:19:37.124Z",
   "chatInfo": {
-    "user": "Claude",
+    "user": "admin",
     "chatName": "chat_1730476494973"
   }
 }
